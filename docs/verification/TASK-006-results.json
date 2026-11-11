@@ -35,6 +35,7 @@
       "fps": 10,
       "frames": 71451,
       "home": "Melbourne Victory Football Club",
+      "home_away_transitions": 223,
       "id": 2017461,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.4197133869276477,
@@ -153,6 +154,9 @@
         "H": 22756,
         "X": 13040
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "59cfa5588efee041da439f44df5b5b92f2b7305571dc831164e3d05f7415787a"
     },
     {
@@ -162,6 +166,7 @@
       "fps": 10,
       "frames": 71101,
       "home": "Western United",
+      "home_away_transitions": 250,
       "id": 2016236,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.4240484908156672,
@@ -280,6 +285,9 @@
         "H": 21316,
         "X": 11159
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "d78555f9dfd7d1ce9de38066d3c98e6d54417c6d45d73b1f1ce7e26f07263d8f"
     },
     {
@@ -289,6 +297,7 @@
       "fps": 10,
       "frames": 72101,
       "home": "Western United",
+      "home_away_transitions": 263,
       "id": 2015213,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.42380576391630476,
@@ -407,6 +416,9 @@
         "H": 20540,
         "X": 12235
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "413990d0024d84856ce1f2a16866b8887472c0cea22c61caef0d1f46505a609e"
     },
     {
@@ -416,6 +428,7 @@
       "fps": 10,
       "frames": 70251,
       "home": "Western United",
+      "home_away_transitions": 268,
       "id": 2013725,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.42488760436737316,
@@ -534,6 +547,9 @@
         "H": 22109,
         "X": 13479
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "13eb83329814ed5f5d73da8f8ab5c5979d6c8a7858e89e28a7fa8072f91fb250"
     },
     {
@@ -543,6 +559,7 @@
       "fps": 10,
       "frames": 71851,
       "home": "Wellington Phoenix FC",
+      "home_away_transitions": 229,
       "id": 2011166,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.44999447045379143,
@@ -661,6 +678,9 @@
         "H": 19481,
         "X": 12586
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "8ec2937050930d87e4f52b2d65515f70ef8edd0ae2814bf40155c4448133390e"
     },
     {
@@ -670,6 +690,7 @@
       "fps": 10,
       "frames": 58991,
       "home": "Melbourne City FC",
+      "home_away_transitions": 186,
       "id": 2010085,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.47287517011010766,
@@ -788,6 +809,9 @@
         "H": 30476,
         "X": 27
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "04562d9754b2977c80430535e9b5733426bc4ce910db56fe7a3760876211ac5a"
     },
     {
@@ -797,6 +821,7 @@
       "fps": 10,
       "frames": 57571,
       "home": "Auckland FC",
+      "home_away_transitions": 220,
       "id": 2007721,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.5002546053616894,
@@ -915,6 +940,9 @@
         "H": 21450,
         "X": 45
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "fea913b8d4cbde8d85c6bdf5f1a4b3fd203b78227e976a171c8ab0946705d378"
     },
     {
@@ -924,6 +952,7 @@
       "fps": 10,
       "frames": 58081,
       "home": "Perth Glory Football Club",
+      "home_away_transitions": 184,
       "id": 2007448,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.4444748546014369,
@@ -1042,6 +1071,9 @@
         "H": 20910,
         "X": 57
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "12d00d6e4257218812df6e4c4263c49387ba0313a83ff8d826c4416828f9c798"
     },
     {
@@ -1051,6 +1083,7 @@
       "fps": 10,
       "frames": 59101,
       "home": "Melbourne Victory Football Club",
+      "home_away_transitions": 232,
       "id": 2006363,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.49705292393149203,
@@ -1169,6 +1202,9 @@
         "H": 22802,
         "X": 37
       },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
       "tracking_sha256": "61dfdbd83f8e654127b249b8503f062338c14ec0c9e65404bcf70fb7c1346bd4"
     },
     {
@@ -1178,6 +1214,7 @@
       "fps": 10,
       "frames": 57621,
       "home": "Sydney Football Club",
+      "home_away_transitions": 229,
       "id": 1996435,
       "instantaneous_live_phase": {
         "agreement_all_reference": 0.48143880411086887,
@@ -1295,6 +1332,9 @@
         "D": 9878,
         "H": 24005,
         "X": 27
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
       },
       "tracking_sha256": "f42764d8bde290e8f738fa21141cadbed75408314b0b337bbf1d5a3444540a02"
     }

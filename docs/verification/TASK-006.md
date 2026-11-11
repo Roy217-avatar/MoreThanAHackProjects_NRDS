@@ -116,3 +116,13 @@ shasum -a 256 docs/verification/TASK-006-results.json
   submission validator: **199,319 ordered rows, frame 0–199318, legal labels**. No new
   BAR-ATH submission was generated in TASK-006. The official evaluator and starter were not
   modified or run to select this comparison.
+
+## Re-verification after TASK-010 adapter extension
+
+TASK-010 added cached nearest-distance evidence, a count of H/A transitions, and an explicit
+audit for a missing terminal source frame. The ten TASK-006 development files have no missing
+terminal frame; the original agreement counts remain unchanged. Re-running the command above
+now writes two additional aggregate fields per match and produces SHA-256
+`1493abcafa28487da0fbd710e7187e9c41347fda08ae65c7f857d1ab1a85ccc8` for the current
+`TASK-006-results.json`. The earlier `70d119...` hash documents the prior schema; the current
+code and artifact use the new hash. No source tracking or frame labels were changed.

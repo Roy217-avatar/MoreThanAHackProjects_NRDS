@@ -1,0 +1,1353 @@
+{
+  "config_sha256": "9df346247df6dbbbbd5860a375bd2d601bc01a899c5fe0ecbc4733553df36a49",
+  "instantaneous_live_phase_total": {
+    "agreement_all_reference": 0.5024706049748412,
+    "agreement_when_team_predicted": 0.8854078818407677,
+    "matching_team_frames": 155382,
+    "reference_missing_frames": 338884,
+    "reference_team_frames": 309236,
+    "team_prediction_coverage": 0.5675018432524027,
+    "team_prediction_frames": 175492
+  },
+  "instantaneous_total": {
+    "agreement_all_reference": 0.4691361552431389,
+    "agreement_when_team_predicted": 0.8312387488748875,
+    "matching_team_frames": 147761,
+    "reference_missing_frames": 333156,
+    "reference_team_frames": 314964,
+    "team_prediction_coverage": 0.5643819611130161,
+    "team_prediction_frames": 177760
+  },
+  "live_phase_total": {
+    "agreement_all_reference": 0.8675121913360669,
+    "agreement_when_team_predicted": 0.8888690085684181,
+    "matching_team_frames": 268266,
+    "reference_missing_frames": 338884,
+    "reference_team_frames": 309236,
+    "team_prediction_coverage": 0.9759730432420546,
+    "team_prediction_frames": 301806
+  },
+  "matches": [
+    {
+      "away": "Auckland FC",
+      "ball_position_frames": 40404,
+      "date": "2025-05-17",
+      "fps": 10,
+      "frames": 71451,
+      "home": "Melbourne Victory Football Club",
+      "home_away_transitions": 271,
+      "id": 2017461,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.46627053477804964,
+        "agreement_when_team_predicted": 0.865446996237187,
+        "confusion": {
+          "A": {
+            "A": 4800,
+            "D": 0,
+            "H": 903,
+            "X": 5186
+          },
+          "H": {
+            "A": 1171,
+            "D": 0,
+            "H": 8540,
+            "X": 8010
+          }
+        },
+        "matching_team_frames": 13340,
+        "reference_missing_frames": 42841,
+        "reference_team_frames": 28610,
+        "team_prediction_coverage": 0.5387626703949668,
+        "team_prediction_frames": 15414
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.4249515369703683,
+        "agreement_when_team_predicted": 0.788338042640637,
+        "confusion": {
+          "A": {
+            "A": 4299,
+            "D": 0,
+            "H": 1509,
+            "X": 5284
+          },
+          "H": {
+            "A": 1787,
+            "D": 0,
+            "H": 7977,
+            "X": 8032
+          }
+        },
+        "matching_team_frames": 12276,
+        "reference_missing_frames": 42563,
+        "reference_team_frames": 28888,
+        "team_prediction_coverage": 0.5390473553032401,
+        "team_prediction_frames": 15572
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8328556448794128,
+        "agreement_when_team_predicted": 0.8673874267409268,
+        "confusion": {
+          "A": {
+            "A": 8794,
+            "D": 561,
+            "H": 1534,
+            "X": 0
+          },
+          "H": {
+            "A": 2109,
+            "D": 565,
+            "H": 15034,
+            "X": 13
+          }
+        },
+        "matching_team_frames": 23828,
+        "reference_missing_frames": 42841,
+        "reference_team_frames": 28610,
+        "team_prediction_coverage": 0.9601887451939881,
+        "team_prediction_frames": 27471
+      },
+      "metadata_sha256": "db27759bf734dc8e3d9e56f047965cc7c74833bc3d0345ee3821ab97681ce4b9",
+      "period_blocks": [
+        [
+          1,
+          2510,
+          30210
+        ],
+        [
+          2,
+          39670,
+          70420
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 0,
+        "excluded_cross_period_phases": 0
+      },
+      "phase_sha256": "5331495ecea48056df56dc843864bf36f366f7bca3898d82273eba7a3a54eba5",
+      "player_position_frames": 40404,
+      "temporal": {
+        "agreement_all_reference": 0.7403766269731377,
+        "agreement_when_team_predicted": 0.7771519930235093,
+        "confusion": {
+          "A": {
+            "A": 7733,
+            "D": 658,
+            "H": 2701,
+            "X": 0
+          },
+          "H": {
+            "A": 3432,
+            "D": 709,
+            "H": 13655,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 21388,
+        "reference_missing_frames": 42563,
+        "reference_team_frames": 28888,
+        "team_prediction_coverage": 0.9526793132096372,
+        "team_prediction_frames": 27521
+      },
+      "temporal_labels": {
+        "A": 18429,
+        "D": 16654,
+        "H": 23355,
+        "X": 13013
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "59cfa5588efee041da439f44df5b5b92f2b7305571dc831164e3d05f7415787a"
+    },
+    {
+      "away": "Adelaide United Football Club",
+      "ball_position_frames": 43883,
+      "date": "2025-05-09",
+      "fps": 10,
+      "frames": 71101,
+      "home": "Western United",
+      "home_away_transitions": 304,
+      "id": 2016236,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.47297006245961665,
+        "agreement_when_team_predicted": 0.8718734047983665,
+        "confusion": {
+          "A": {
+            "A": 8428,
+            "D": 0,
+            "H": 1220,
+            "X": 7473
+          },
+          "H": {
+            "A": 1039,
+            "D": 0,
+            "H": 6944,
+            "X": 7397
+          }
+        },
+        "matching_team_frames": 15372,
+        "reference_missing_frames": 38600,
+        "reference_team_frames": 32501,
+        "team_prediction_coverage": 0.5424756161348882,
+        "team_prediction_frames": 17631
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.43643991066578136,
+        "agreement_when_team_predicted": 0.8148878620534205,
+        "confusion": {
+          "A": {
+            "A": 8070,
+            "D": 0,
+            "H": 1762,
+            "X": 7979
+          },
+          "H": {
+            "A": 1523,
+            "D": 0,
+            "H": 6391,
+            "X": 7409
+          }
+        },
+        "matching_team_frames": 14461,
+        "reference_missing_frames": 37967,
+        "reference_team_frames": 33134,
+        "team_prediction_coverage": 0.5355827850546266,
+        "team_prediction_frames": 17746
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8600043075597674,
+        "agreement_when_team_predicted": 0.8811512877904227,
+        "confusion": {
+          "A": {
+            "A": 14796,
+            "D": 402,
+            "H": 1923,
+            "X": 0
+          },
+          "H": {
+            "A": 1847,
+            "D": 378,
+            "H": 13155,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 27951,
+        "reference_missing_frames": 38600,
+        "reference_team_frames": 32501,
+        "team_prediction_coverage": 0.9760007384388173,
+        "team_prediction_frames": 31721
+      },
+      "metadata_sha256": "93ccf67cead82def1acda87d3cf550fd42f96cb0e1adbff9eeb8824077980495",
+      "period_blocks": [
+        [
+          1,
+          1170,
+          31720
+        ],
+        [
+          2,
+          41060,
+          70550
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 120,
+        "excluded_cross_period_phases": 1
+      },
+      "phase_sha256": "cb162b42bd95306404da15071df07f70cb0458db9b532930dac2a1b0092242e9",
+      "player_position_frames": 43883,
+      "temporal": {
+        "agreement_all_reference": 0.7935353413412205,
+        "agreement_when_team_predicted": 0.8203232247597654,
+        "confusion": {
+          "A": {
+            "A": 14168,
+            "D": 614,
+            "H": 3029,
+            "X": 0
+          },
+          "H": {
+            "A": 2730,
+            "D": 457,
+            "H": 12125,
+            "X": 11
+          }
+        },
+        "matching_team_frames": 26293,
+        "reference_missing_frames": 37967,
+        "reference_team_frames": 33134,
+        "team_prediction_coverage": 0.9673447214341764,
+        "team_prediction_frames": 32052
+      },
+      "temporal_labels": {
+        "A": 26257,
+        "D": 11796,
+        "H": 21970,
+        "X": 11078
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "d78555f9dfd7d1ce9de38066d3c98e6d54417c6d45d73b1f1ce7e26f07263d8f"
+    },
+    {
+      "away": "Auckland FC",
+      "ball_position_frames": 48542,
+      "date": "2025-05-03",
+      "fps": 10,
+      "frames": 72101,
+      "home": "Western United",
+      "home_away_transitions": 323,
+      "id": 2015213,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.4748322147651007,
+        "agreement_when_team_predicted": 0.865651052600012,
+        "confusion": {
+          "A": {
+            "A": 8050,
+            "D": 0,
+            "H": 1272,
+            "X": 7870
+          },
+          "H": {
+            "A": 968,
+            "D": 0,
+            "H": 6383,
+            "X": 5853
+          }
+        },
+        "matching_team_frames": 14433,
+        "reference_missing_frames": 41705,
+        "reference_team_frames": 30396,
+        "team_prediction_coverage": 0.5485261218581392,
+        "team_prediction_frames": 16673
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.44033302497687327,
+        "agreement_when_team_predicted": 0.8141071007313045,
+        "confusion": {
+          "A": {
+            "A": 7587,
+            "D": 0,
+            "H": 1651,
+            "X": 7814
+          },
+          "H": {
+            "A": 1501,
+            "D": 0,
+            "H": 6217,
+            "X": 6579
+          }
+        },
+        "matching_team_frames": 13804,
+        "reference_missing_frames": 40752,
+        "reference_team_frames": 31349,
+        "team_prediction_coverage": 0.5408784969217519,
+        "team_prediction_frames": 16956
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8523818923542571,
+        "agreement_when_team_predicted": 0.8720926318623986,
+        "confusion": {
+          "A": {
+            "A": 14582,
+            "D": 326,
+            "H": 2277,
+            "X": 7
+          },
+          "H": {
+            "A": 1523,
+            "D": 336,
+            "H": 11327,
+            "X": 18
+          }
+        },
+        "matching_team_frames": 25909,
+        "reference_missing_frames": 41705,
+        "reference_team_frames": 30396,
+        "team_prediction_coverage": 0.9773983418870904,
+        "team_prediction_frames": 29709
+      },
+      "metadata_sha256": "300342194bf3dcd9fe356ed30df26fd0ee6e8caeb8ce5d8cfd27cf90cd995dff",
+      "period_blocks": [
+        [
+          1,
+          2210,
+          31040
+        ],
+        [
+          2,
+          40280,
+          71350
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 0,
+        "excluded_cross_period_phases": 0
+      },
+      "phase_sha256": "4ccaa43d8c390ba1b4011bcdb63ee8208686a5d11f275ead130048239e8a0ba8",
+      "player_position_frames": 48542,
+      "temporal": {
+        "agreement_all_reference": 0.7931991451082969,
+        "agreement_when_team_predicted": 0.8148245240357833,
+        "confusion": {
+          "A": {
+            "A": 13820,
+            "D": 337,
+            "H": 2895,
+            "X": 0
+          },
+          "H": {
+            "A": 2756,
+            "D": 476,
+            "H": 11046,
+            "X": 19
+          }
+        },
+        "matching_team_frames": 24866,
+        "reference_missing_frames": 40752,
+        "reference_team_frames": 31349,
+        "team_prediction_coverage": 0.9734600784714026,
+        "team_prediction_frames": 30517
+      },
+      "temporal_labels": {
+        "A": 26607,
+        "D": 12363,
+        "H": 20904,
+        "X": 12227
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "413990d0024d84856ce1f2a16866b8887472c0cea22c61caef0d1f46505a609e"
+    },
+    {
+      "away": "Sydney Football Club",
+      "ball_position_frames": 44992,
+      "date": "2025-04-27",
+      "fps": 10,
+      "frames": 70251,
+      "home": "Western United",
+      "home_away_transitions": 299,
+      "id": 2013725,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.46724470134874757,
+        "agreement_when_team_predicted": 0.8637577916295637,
+        "confusion": {
+          "A": {
+            "A": 7423,
+            "D": 0,
+            "H": 1214,
+            "X": 7208
+          },
+          "H": {
+            "A": 1081,
+            "D": 0,
+            "H": 7127,
+            "X": 7087
+          }
+        },
+        "matching_team_frames": 14550,
+        "reference_missing_frames": 39111,
+        "reference_team_frames": 31140,
+        "team_prediction_coverage": 0.5409441233140655,
+        "team_prediction_frames": 16845
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.43320220298977186,
+        "agreement_when_team_predicted": 0.8014089427107592,
+        "confusion": {
+          "A": {
+            "A": 7015,
+            "D": 0,
+            "H": 1681,
+            "X": 7223
+          },
+          "H": {
+            "A": 1730,
+            "D": 0,
+            "H": 6750,
+            "X": 7376
+          }
+        },
+        "matching_team_frames": 13765,
+        "reference_missing_frames": 38476,
+        "reference_team_frames": 31775,
+        "team_prediction_coverage": 0.5405507474429583,
+        "team_prediction_frames": 17176
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8421644187540142,
+        "agreement_when_team_predicted": 0.8602873638630101,
+        "confusion": {
+          "A": {
+            "A": 13091,
+            "D": 412,
+            "H": 2342,
+            "X": 0
+          },
+          "H": {
+            "A": 1917,
+            "D": 235,
+            "H": 13134,
+            "X": 9
+          }
+        },
+        "matching_team_frames": 26225,
+        "reference_missing_frames": 39111,
+        "reference_team_frames": 31140,
+        "team_prediction_coverage": 0.9789338471419397,
+        "team_prediction_frames": 30484
+      },
+      "metadata_sha256": "c8b9372fbd2e79ddcbb859b51b5086111ed7f3cd84ca0b457091c7d0e5209df3",
+      "period_blocks": [
+        [
+          1,
+          4040,
+          31930
+        ],
+        [
+          2,
+          40960,
+          69860
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 0,
+        "excluded_cross_period_phases": 0
+      },
+      "phase_sha256": "02a4320f237512d0b3158d799a845cc1dc8a9d87c542fd64d27515afefb8354f",
+      "player_position_frames": 44992,
+      "temporal": {
+        "agreement_all_reference": 0.7893312352478363,
+        "agreement_when_team_predicted": 0.80859500934941,
+        "confusion": {
+          "A": {
+            "A": 12506,
+            "D": 373,
+            "H": 3040,
+            "X": 0
+          },
+          "H": {
+            "A": 2897,
+            "D": 384,
+            "H": 12575,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 25081,
+        "reference_missing_frames": 38476,
+        "reference_team_frames": 31775,
+        "team_prediction_coverage": 0.9761762391817467,
+        "team_prediction_frames": 31018
+      },
+      "temporal_labels": {
+        "A": 24034,
+        "D": 10124,
+        "H": 22622,
+        "X": 13471
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "13eb83329814ed5f5d73da8f8ab5c5979d6c8a7858e89e28a7fa8072f91fb250"
+    },
+    {
+      "away": "Melbourne Victory Football Club",
+      "ball_position_frames": 39015,
+      "date": "2025-04-12",
+      "fps": 10,
+      "frames": 71851,
+      "home": "Wellington Phoenix FC",
+      "home_away_transitions": 274,
+      "id": 2011166,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.49577911306078815,
+        "agreement_when_team_predicted": 0.8714443076524331,
+        "confusion": {
+          "A": {
+            "A": 7913,
+            "D": 0,
+            "H": 1018,
+            "X": 6358
+          },
+          "H": {
+            "A": 966,
+            "D": 0,
+            "H": 5536,
+            "X": 5336
+          }
+        },
+        "matching_team_frames": 13449,
+        "reference_missing_frames": 44724,
+        "reference_team_frames": 27127,
+        "team_prediction_coverage": 0.5689165775795333,
+        "team_prediction_frames": 15433
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.46160242967676623,
+        "agreement_when_team_predicted": 0.8166176282461303,
+        "confusion": {
+          "A": {
+            "A": 7535,
+            "D": 0,
+            "H": 1408,
+            "X": 6822
+          },
+          "H": {
+            "A": 1459,
+            "D": 0,
+            "H": 5232,
+            "X": 5202
+          }
+        },
+        "matching_team_frames": 12767,
+        "reference_missing_frames": 44193,
+        "reference_team_frames": 27658,
+        "team_prediction_coverage": 0.5652614071877937,
+        "team_prediction_frames": 15634
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8331920227080031,
+        "agreement_when_team_predicted": 0.8683058009988475,
+        "confusion": {
+          "A": {
+            "A": 12898,
+            "D": 630,
+            "H": 1761,
+            "X": 0
+          },
+          "H": {
+            "A": 1667,
+            "D": 466,
+            "H": 9704,
+            "X": 1
+          }
+        },
+        "matching_team_frames": 22602,
+        "reference_missing_frames": 44724,
+        "reference_team_frames": 27127,
+        "team_prediction_coverage": 0.9595605853946253,
+        "team_prediction_frames": 26030
+      },
+      "metadata_sha256": "6b381b8bd338859c394c1992da137436e2e09cd609a81ac94d5f5f941d35d1bc",
+      "period_blocks": [
+        [
+          1,
+          2300,
+          31290
+        ],
+        [
+          2,
+          41090,
+          71390
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 0,
+        "excluded_cross_period_phases": 0
+      },
+      "phase_sha256": "b49e1482a2d6086f06805f138f40a00dd22b2d14767a4418fbda47114e263b4c",
+      "player_position_frames": 39015,
+      "temporal": {
+        "agreement_all_reference": 0.7733747921035505,
+        "agreement_when_team_predicted": 0.8100431720063622,
+        "confusion": {
+          "A": {
+            "A": 12343,
+            "D": 828,
+            "H": 2594,
+            "X": 0
+          },
+          "H": {
+            "A": 2422,
+            "D": 423,
+            "H": 9047,
+            "X": 1
+          }
+        },
+        "matching_team_frames": 21390,
+        "reference_missing_frames": 44193,
+        "reference_team_frames": 27658,
+        "team_prediction_coverage": 0.9547328078675248,
+        "team_prediction_frames": 26406
+      },
+      "temporal_labels": {
+        "A": 21689,
+        "D": 17336,
+        "H": 20250,
+        "X": 12576
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "8ec2937050930d87e4f52b2d65515f70ef8edd0ae2814bf40155c4448133390e"
+    },
+    {
+      "away": "Central Coast Mariners Football Club",
+      "ball_position_frames": 45521,
+      "date": "2025-04-05",
+      "fps": 10,
+      "frames": 58991,
+      "home": "Melbourne City FC",
+      "home_away_transitions": 241,
+      "id": 2010085,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.5229184708647779,
+        "agreement_when_team_predicted": 0.9002183057345189,
+        "confusion": {
+          "A": {
+            "A": 5830,
+            "D": 0,
+            "H": 847,
+            "X": 5564
+          },
+          "H": {
+            "A": 1027,
+            "D": 0,
+            "H": 11077,
+            "X": 7987
+          }
+        },
+        "matching_team_frames": 16907,
+        "reference_missing_frames": 26659,
+        "reference_team_frames": 32332,
+        "team_prediction_coverage": 0.5808796239020165,
+        "team_prediction_frames": 18781
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.4956023292490598,
+        "agreement_when_team_predicted": 0.861639862905352,
+        "confusion": {
+          "A": {
+            "A": 5698,
+            "D": 0,
+            "H": 1459,
+            "X": 6101
+          },
+          "H": {
+            "A": 1165,
+            "D": 0,
+            "H": 10643,
+            "X": 7906
+          }
+        },
+        "matching_team_frames": 16341,
+        "reference_missing_frames": 26019,
+        "reference_team_frames": 32972,
+        "team_prediction_coverage": 0.5751850054591775,
+        "team_prediction_frames": 18965
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8841086230360015,
+        "agreement_when_team_predicted": 0.9050182048440716,
+        "confusion": {
+          "A": {
+            "A": 10330,
+            "D": 358,
+            "H": 1553,
+            "X": 0
+          },
+          "H": {
+            "A": 1447,
+            "D": 389,
+            "H": 18255,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 28585,
+        "reference_missing_frames": 26659,
+        "reference_team_frames": 32332,
+        "team_prediction_coverage": 0.9768959544723493,
+        "team_prediction_frames": 31585
+      },
+      "metadata_sha256": "3222413d358251e1ac1cdde1f5ee2fd126b0d9cc3470c2aa1bb07177a09ef24d",
+      "period_blocks": [
+        [
+          1,
+          10,
+          29440
+        ],
+        [
+          2,
+          29450,
+          58990
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 136,
+        "excluded_cross_period_phases": 1
+      },
+      "phase_sha256": "c2c7ac0a4286b171681d11a1e65e1d82594bcc33ff9cc5faf34ae6a5d28fa9af",
+      "player_position_frames": 45521,
+      "temporal": {
+        "agreement_all_reference": 0.8290064296979255,
+        "agreement_when_team_predicted": 0.8533608067184915,
+        "confusion": {
+          "A": {
+            "A": 9956,
+            "D": 471,
+            "H": 2831,
+            "X": 0
+          },
+          "H": {
+            "A": 1866,
+            "D": 470,
+            "H": 17378,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 27334,
+        "reference_missing_frames": 26019,
+        "reference_team_frames": 32972,
+        "team_prediction_coverage": 0.9714606332645881,
+        "team_prediction_frames": 32031
+      },
+      "temporal_labels": {
+        "A": 21789,
+        "D": 8158,
+        "H": 29025,
+        "X": 19
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "04562d9754b2977c80430535e9b5733426bc4ce910db56fe7a3760876211ac5a"
+    },
+    {
+      "away": "Central Coast Mariners Football Club",
+      "ball_position_frames": 46297,
+      "date": "2025-03-16",
+      "fps": 10,
+      "frames": 57571,
+      "home": "Auckland FC",
+      "home_away_transitions": 256,
+      "id": 2007721,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.5471618990564625,
+        "agreement_when_team_predicted": 0.9041726476265901,
+        "confusion": {
+          "A": {
+            "A": 9704,
+            "D": 0,
+            "H": 839,
+            "X": 6527
+          },
+          "H": {
+            "A": 1097,
+            "D": 0,
+            "H": 8563,
+            "X": 6655
+          }
+        },
+        "matching_team_frames": 18267,
+        "reference_missing_frames": 24186,
+        "reference_team_frames": 33385,
+        "team_prediction_coverage": 0.6051520143777146,
+        "team_prediction_frames": 20203
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.5157181014998973,
+        "agreement_when_team_predicted": 0.8600518870233491,
+        "confusion": {
+          "A": {
+            "A": 9327,
+            "D": 0,
+            "H": 1192,
+            "X": 6712
+          },
+          "H": {
+            "A": 1667,
+            "D": 0,
+            "H": 8243,
+            "X": 6928
+          }
+        },
+        "matching_team_frames": 17570,
+        "reference_missing_frames": 23502,
+        "reference_team_frames": 34069,
+        "team_prediction_coverage": 0.5996360327570519,
+        "team_prediction_frames": 20429
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8883330837202337,
+        "agreement_when_team_predicted": 0.9093334150978107,
+        "confusion": {
+          "A": {
+            "A": 15396,
+            "D": 390,
+            "H": 1284,
+            "X": 0
+          },
+          "H": {
+            "A": 1673,
+            "D": 381,
+            "H": 14261,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 29657,
+        "reference_missing_frames": 24186,
+        "reference_team_frames": 33385,
+        "team_prediction_coverage": 0.9769057960161749,
+        "team_prediction_frames": 32614
+      },
+      "metadata_sha256": "0ed112bc955eb341bc25005f9a7bb3fdf040223c8e1765646225c47e974b6139",
+      "period_blocks": [
+        [
+          1,
+          10,
+          27710
+        ],
+        [
+          2,
+          27720,
+          57560
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 61,
+        "excluded_cross_period_phases": 1
+      },
+      "phase_sha256": "cfb08b62ec61b54ecabfa3f2bed01c6f3dc49a4dbae4382dfcb1006648ef95a3",
+      "player_position_frames": 46297,
+      "temporal": {
+        "agreement_all_reference": 0.8338078605183598,
+        "agreement_when_team_predicted": 0.860609549200194,
+        "confusion": {
+          "A": {
+            "A": 14774,
+            "D": 450,
+            "H": 2007,
+            "X": 0
+          },
+          "H": {
+            "A": 2594,
+            "D": 611,
+            "H": 13633,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 28407,
+        "reference_missing_frames": 23502,
+        "reference_team_frames": 34069,
+        "team_prediction_coverage": 0.9688573189703249,
+        "team_prediction_frames": 33008
+      },
+      "temporal_labels": {
+        "A": 23500,
+        "D": 11851,
+        "H": 22184,
+        "X": 36
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "fea913b8d4cbde8d85c6bdf5f1a4b3fd203b78227e976a171c8ab0946705d378"
+    },
+    {
+      "away": "Brisbane Roar FC",
+      "ball_position_frames": 44283,
+      "date": "2025-03-15",
+      "fps": 10,
+      "frames": 58081,
+      "home": "Perth Glory Football Club",
+      "home_away_transitions": 228,
+      "id": 2007448,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.49394457748888126,
+        "agreement_when_team_predicted": 0.8931642437364676,
+        "confusion": {
+          "A": {
+            "A": 7636,
+            "D": 0,
+            "H": 866,
+            "X": 6461
+          },
+          "H": {
+            "A": 861,
+            "D": 0,
+            "H": 6802,
+            "X": 6604
+          }
+        },
+        "matching_team_frames": 14438,
+        "reference_missing_frames": 28851,
+        "reference_team_frames": 29230,
+        "team_prediction_coverage": 0.5530277112555594,
+        "team_prediction_frames": 16165
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.4777759056444819,
+        "agreement_when_team_predicted": 0.857505745736059,
+        "confusion": {
+          "A": {
+            "A": 7302,
+            "D": 0,
+            "H": 1137,
+            "X": 6452
+          },
+          "H": {
+            "A": 1219,
+            "D": 0,
+            "H": 6876,
+            "X": 6689
+          }
+        },
+        "matching_team_frames": 14178,
+        "reference_missing_frames": 28406,
+        "reference_team_frames": 29675,
+        "team_prediction_coverage": 0.5571693344566133,
+        "team_prediction_frames": 16534
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8853232979815259,
+        "agreement_when_team_predicted": 0.9038770520433113,
+        "confusion": {
+          "A": {
+            "A": 13504,
+            "D": 271,
+            "H": 1175,
+            "X": 13
+          },
+          "H": {
+            "A": 1577,
+            "D": 316,
+            "H": 12374,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 25878,
+        "reference_missing_frames": 28851,
+        "reference_team_frames": 29230,
+        "team_prediction_coverage": 0.9794731440301061,
+        "team_prediction_frames": 28630
+      },
+      "metadata_sha256": "434b31c032656be4a89e7042eadd442d4dfb468e4bfa87ce188102f314262873",
+      "period_blocks": [
+        [
+          1,
+          10,
+          28530
+        ],
+        [
+          2,
+          28540,
+          58080
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 28,
+        "excluded_cross_period_phases": 1
+      },
+      "phase_sha256": "4ec5ece7b261e8cbb87403cb8a54ac617f5a1b61412554afeaa967d46e841994",
+      "player_position_frames": 44283,
+      "temporal": {
+        "agreement_all_reference": 0.8300589721988205,
+        "agreement_when_team_predicted": 0.851346213666056,
+        "confusion": {
+          "A": {
+            "A": 12668,
+            "D": 380,
+            "H": 1837,
+            "X": 6
+          },
+          "H": {
+            "A": 2464,
+            "D": 347,
+            "H": 11964,
+            "X": 9
+          }
+        },
+        "matching_team_frames": 24632,
+        "reference_missing_frames": 28406,
+        "reference_team_frames": 29675,
+        "team_prediction_coverage": 0.9749957877000842,
+        "team_prediction_frames": 28933
+      },
+      "temporal_labels": {
+        "A": 25508,
+        "D": 11461,
+        "H": 21063,
+        "X": 49
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "12d00d6e4257218812df6e4c4263c49387ba0313a83ff8d826c4416828f9c798"
+    },
+    {
+      "away": "Central Coast Mariners Football Club",
+      "ball_position_frames": 44347,
+      "date": "2025-03-08",
+      "fps": 10,
+      "frames": 59101,
+      "home": "Melbourne Victory Football Club",
+      "home_away_transitions": 272,
+      "id": 2006363,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.5465205986730443,
+        "agreement_when_team_predicted": 0.9107271418286537,
+        "confusion": {
+          "A": {
+            "A": 8179,
+            "D": 0,
+            "H": 684,
+            "X": 5687
+          },
+          "H": {
+            "A": 1052,
+            "D": 0,
+            "H": 9531,
+            "X": 7272
+          }
+        },
+        "matching_team_frames": 17710,
+        "reference_missing_frames": 26696,
+        "reference_team_frames": 32405,
+        "team_prediction_coverage": 0.600092578305817,
+        "team_prediction_frames": 19446
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.5046265294941256,
+        "agreement_when_team_predicted": 0.8455653593104504,
+        "confusion": {
+          "A": {
+            "A": 7873,
+            "D": 0,
+            "H": 1495,
+            "X": 6034
+          },
+          "H": {
+            "A": 1533,
+            "D": 0,
+            "H": 8706,
+            "X": 7213
+          }
+        },
+        "matching_team_frames": 16579,
+        "reference_missing_frames": 26247,
+        "reference_team_frames": 32854,
+        "team_prediction_coverage": 0.5967918670481525,
+        "team_prediction_frames": 19607
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.9071439592655455,
+        "agreement_when_team_predicted": 0.9191707576373471,
+        "confusion": {
+          "A": {
+            "A": 13322,
+            "D": 224,
+            "H": 1004,
+            "X": 0
+          },
+          "H": {
+            "A": 1581,
+            "D": 200,
+            "H": 16074,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 29396,
+        "reference_missing_frames": 26696,
+        "reference_team_frames": 32405,
+        "team_prediction_coverage": 0.9869155994445301,
+        "team_prediction_frames": 31981
+      },
+      "metadata_sha256": "26d4068baf7454d1e066b6e70715da6c7ac016b14963a3bfa3ed99ed7c3aba79",
+      "period_blocks": [
+        [
+          1,
+          10,
+          28950
+        ],
+        [
+          2,
+          28960,
+          59090
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 196,
+        "excluded_cross_period_phases": 1
+      },
+      "phase_sha256": "651610758454913a5082b217dccd23ba0e002482dbe39b685528c542d3dcdab6",
+      "player_position_frames": 44347,
+      "temporal": {
+        "agreement_all_reference": 0.8342667559505692,
+        "agreement_when_team_predicted": 0.8486021239047649,
+        "confusion": {
+          "A": {
+            "A": 12749,
+            "D": 229,
+            "H": 2424,
+            "X": 0
+          },
+          "H": {
+            "A": 2466,
+            "D": 326,
+            "H": 14660,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 27409,
+        "reference_missing_frames": 26247,
+        "reference_team_frames": 32854,
+        "team_prediction_coverage": 0.9831070798076338,
+        "team_prediction_frames": 32299
+      },
+      "temporal_labels": {
+        "A": 24342,
+        "D": 10700,
+        "H": 24030,
+        "X": 29
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "61dfdbd83f8e654127b249b8503f062338c14ec0c9e65404bcf70fb7c1346bd4"
+    },
+    {
+      "away": "Adelaide United Football Club",
+      "ball_position_frames": 43531,
+      "date": "2025-02-01",
+      "fps": 10,
+      "frames": 57621,
+      "home": "Sydney Football Club",
+      "home_away_transitions": 284,
+      "id": 1996435,
+      "instantaneous_live_phase": {
+        "agreement_all_reference": 0.5268140766116475,
+        "agreement_when_team_predicted": 0.8949791016348342,
+        "confusion": {
+          "A": {
+            "A": 7521,
+            "D": 0,
+            "H": 907,
+            "X": 6329
+          },
+          "H": {
+            "A": 1078,
+            "D": 0,
+            "H": 9395,
+            "X": 6880
+          }
+        },
+        "matching_team_frames": 16916,
+        "reference_missing_frames": 25511,
+        "reference_team_frames": 32110,
+        "team_prediction_coverage": 0.5886328246652134,
+        "team_prediction_frames": 18901
+      },
+      "instantaneous_proximity": {
+        "agreement_all_reference": 0.4915618287818349,
+        "agreement_when_team_predicted": 0.8369468679797294,
+        "confusion": {
+          "A": {
+            "A": 7140,
+            "D": 0,
+            "H": 1644,
+            "X": 6707
+          },
+          "H": {
+            "A": 1477,
+            "D": 0,
+            "H": 8880,
+            "X": 6742
+          }
+        },
+        "matching_team_frames": 16020,
+        "reference_missing_frames": 25031,
+        "reference_team_frames": 32590,
+        "team_prediction_coverage": 0.5873274010432648,
+        "team_prediction_frames": 19141
+      },
+      "live_phase": {
+        "agreement_all_reference": 0.8793210837745251,
+        "agreement_when_team_predicted": 0.8940502200690289,
+        "confusion": {
+          "A": {
+            "A": 12894,
+            "D": 378,
+            "H": 1485,
+            "X": 0
+          },
+          "H": {
+            "A": 1861,
+            "D": 151,
+            "H": 15341,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 28235,
+        "reference_missing_frames": 25511,
+        "reference_team_frames": 32110,
+        "team_prediction_coverage": 0.98352538150109,
+        "team_prediction_frames": 31581
+      },
+      "metadata_sha256": "f54179645d3c3f308a7094086283277f2a7c99da5f3919302e622cbd82f9d065",
+      "period_blocks": [
+        [
+          1,
+          10,
+          28020
+        ],
+        [
+          2,
+          28030,
+          57620
+        ]
+      ],
+      "phase_audit": {
+        "excluded_cross_period_frames": 74,
+        "excluded_cross_period_phases": 1
+      },
+      "phase_sha256": "ff7ed406c900ad98bd48b6b9913e088c40bf176a3915f061430c1af7405ccb09",
+      "player_position_frames": 43531,
+      "temporal": {
+        "agreement_all_reference": 0.8294875728751151,
+        "agreement_when_team_predicted": 0.8398210568827861,
+        "confusion": {
+          "A": {
+            "A": 12497,
+            "D": 222,
+            "H": 2772,
+            "X": 0
+          },
+          "H": {
+            "A": 2384,
+            "D": 179,
+            "H": 14536,
+            "X": 0
+          }
+        },
+        "matching_team_frames": 27033,
+        "reference_missing_frames": 25031,
+        "reference_team_frames": 32590,
+        "team_prediction_coverage": 0.9876956121509666,
+        "team_prediction_frames": 32189
+      },
+      "temporal_labels": {
+        "A": 23633,
+        "D": 9499,
+        "H": 24470,
+        "X": 19
+      },
+      "tracking_audit": {
+        "missing_terminal_frames": 0
+      },
+      "tracking_sha256": "f42764d8bde290e8f738fa21141cadbed75408314b0b337bbf1d5a3444540a02"
+    }
+  ],
+  "source": "SkillCorner/opendata",
+  "source_revision": "4340d274572876239c154c90bc507a9b3250a656",
+  "total": {
+    "agreement_all_reference": 0.8059111517506763,
+    "agreement_when_team_predicted": 0.8295900958905005,
+    "matching_team_frames": 253833,
+    "reference_missing_frames": 333156,
+    "reference_team_frames": 314964,
+    "team_prediction_coverage": 0.9714570554095071,
+    "team_prediction_frames": 305974
+  }
+}

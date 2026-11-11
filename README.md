@@ -69,7 +69,7 @@ These are general, conservative engineering defaults, **not fitted parameters**.
 uses only set-piece tags from the automatic tagging; it does not yet use homography, team motion,
 or video. In particular, it will miss many stoppages whose ball is missing rather than tracked
 outside the pitch or stationary in a set-piece interval, and it can delay fast turnovers.
-It has an external provider-agreement diagnostic on ten SkillCorner matches, but no independent
+It has an external provider-agreement diagnostic on nineteen SkillCorner matches, but no independent
 human-labeled validation or demonstrated competition-score gain over the official baseline.
 See [data audit](docs/DATA_AUDIT.md), [tasks](TASKS.md), and verification records in `docs/verification/`.
 
@@ -77,8 +77,8 @@ See [data audit](docs/DATA_AUDIT.md), [tasks](TASKS.md), and verification record
 
 `model/compare_skillcorner.py` maps public SkillCorner 10 fps broadcast tracking to the same
 evidence contract. It scales only the frame-count durations from 25 fps to 10 fps; pitch distances
-stay in metres. The original tactical model, configuration, official baseline and evaluator are
-unchanged. The comparison uses SkillCorner's automatic per-frame possession field and its
+stay in metres. The TASK-006 comparison used fixed v2 settings. The comparison uses
+SkillCorner's automatic per-frame possession field and its
 in-play phase intervals as **provider references**, not verified ground truth. Gaps in either
 reference are unknown, not dead-ball labels. The output contains aggregate counts and input
 fingerprints only; no tracking or frame-level prediction export is committed.
@@ -88,3 +88,23 @@ Download the ten public matches at the pinned SkillCorner revision and run the e
 [`docs/verification/TASK-006-results.json`](docs/verification/TASK-006-results.json). This is
 not the official `spellF1` scorer, and its agreement figures must not be used to claim a higher
 challenge ranking. The comparison makes no parameter choice and uses no challenge public labels.
+
+## Experimental external-tuned variant (TASK-010)
+
+`model/tune_skillcorner.py` searched 144 configurations on the ten TASK-006 matches.
+It selected `model/config_v3.json`; a separately tested offline control-backfill rule is
+recorded in `model/config_v4.json`. Nine additional SkillCorner matches were held out
+until v4 was frozen. On their available provider team labels, v4 agreed on 82.94% of
+frames, versus 82.64% for v2; on provider live-phase frames, agreement was 88.72%.
+The requested roughly 90% per-frame agreement was not reached. These are noisy-provider
+comparisons, not official competition accuracy or `spellF1`.
+
+The v4 rule backfills H/A to the first frame of a sustained candidate run **only after**
+that run confirms control. Brief opposing touches remain with the last controlling team;
+the backfill requires an uninterrupted run (`evidence_gap_frames: 0`), and dead-ball and
+halftime boundaries reset pending evidence. V1 and v2 retain their earlier
+behavior. The official baseline and evaluator remain unchanged. The tuned variant may
+transfer differently from 10 fps broadcast tracking to 25 fps tactical tracking, so it
+is an experimental option rather than a proven final selection. Commands, source split,
+input hashes, BAR-ATH v4 output validation and limitations are in
+[`docs/verification/TASK-010.md`](docs/verification/TASK-010.md).

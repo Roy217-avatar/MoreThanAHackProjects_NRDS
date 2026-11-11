@@ -107,9 +107,14 @@ def load_match(metadata_path, tracking_path, config):
                           if ball is not None else None)
             evidence.append({"candidate": candidate, "outside": outside,
                              "ball_seen": ball is not None, "ball_xy": normalized,
-                             "players_seen": seen, "stationary_set_piece": False})
-    if len(evidence) <= blocks[-1][2]:
+                             "players_seen": seen, "stationary_set_piece": False,
+                             "nearest_distance_m": closest})
+    missing_terminal = blocks[-1][2] + 1 - len(evidence)
+    if missing_terminal > 1:
         raise ValueError("tracking ends before last period end frame")
+    if missing_terminal == 1:
+        blocks[-1] = (blocks[-1][0], blocks[-1][1], len(evidence) - 1)
+    match["_tracking_audit"] = {"missing_terminal_frames": max(0, missing_terminal)}
     return evidence, blocks, reference, match
 
 
@@ -187,6 +192,11 @@ def evaluate_match(metadata_path, tracking_path, phase_path, config):
     phase_audit = {}
     phase_reference = load_phase_reference(phase_path, match, len(evidence),
                                            audit=phase_audit)
+    transitions = sum(labels[frame] != labels[frame - 1]
+                      and labels[frame] in ("H", "A")
+                      and labels[frame - 1] in ("H", "A")
+                      for _, first, last in blocks
+                      for frame in range(first + 1, last + 1))
 
     def digest(path):
         sha = hashlib.sha256()
@@ -201,8 +211,10 @@ def evaluate_match(metadata_path, tracking_path, phase_path, config):
             "metadata_sha256": digest(metadata_path), "tracking_sha256": digest(tracking_path),
             "phase_sha256": digest(phase_path),
             "phase_audit": phase_audit,
+            "tracking_audit": match["_tracking_audit"],
             "ball_position_frames": sum(row["ball_seen"] for row in evidence),
             "player_position_frames": sum(row["players_seen"] > 0 for row in evidence),
+            "home_away_transitions": transitions,
             "temporal_labels": dict(Counter(labels)),
             "temporal": compare_labels(labels, reference),
             "instantaneous_proximity": compare_labels(instant, reference),

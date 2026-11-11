@@ -51,3 +51,22 @@ comparison can expose disagreements and data-quality issues, but cannot justify 
 ranking claim or establish dead-ball recall. No thresholds are changed or selected from it;
 the next validation step requires a compatible independently annotated match. The adapter
 and aggregate report remain separate from the challenge submission pipeline.
+
+## 2026-11-10 — External tuning remains experimental
+
+Use the ten previously inspected SkillCorner matches as a development set and reserve
+nine additional closed matches as a held-out check. The 144-setting grid changed only
+proximity and confirmation parameters; dead-ball settings remained fixed. After the
+grid selected v3, one exploratory offline backfill rule was tested on development data:
+once opposing control is sustained, retroactively label the confirmed run from its
+first frame. An incidental touch remains with the previous team. V4 was frozen before
+examining the nine held-out scores.
+
+Held-out per-frame agreement with SkillCorner's automatic team field rose from 82.64%
+for v2 to 82.94% for v4; live-phase agreement rose from 87.30% to 88.72%. The user's
+roughly 90% per-frame target was not reached. These fields are not human ground truth,
+and 10 fps broadcast tracking differs from the challenge's tactical input. V4 is an
+experimental option with a valid full-length BAR-ATH CSV; do not infer an official
+`spellF1` or ranking gain. Keep v2 available until independent validation supports
+a final choice. See `docs/verification/TASK-010.md` for the frozen split, tests,
+source anomalies, fingerprints and commands.

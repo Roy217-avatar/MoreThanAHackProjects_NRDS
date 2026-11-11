@@ -47,6 +47,16 @@ independently; any new threshold requires lead coordination and a documented
 general rationale. Synthetic tests must cover missing evidence, incidental touches,
 confirmed turnovers, stoppages, restarts, half boundaries, and invalid blocks.
 
+The later external-only TASK-010 experiment leaves v1/v2 configurations unchanged.
+`model/config_v3.json` records tuned distance and duration settings from public
+SkillCorner development matches. `model/config_v4.json` additionally enables
+`control_backfill`: after a sustained candidate run confirms control, offline
+inference assigns that team from the run's first frame within the same half.
+Backfill requires `evidence_gap_frames: 0`, so it never spans a missing or
+contested candidate frame.
+Unconfirmed opposing evidence is never backfilled. This optional behavior uses
+future evidence, and its reason code stays in diagnostics rather than labels.
+
 ## Integration and verification
 
 The lead wires these modules into `model/temporal.py` / `model/run.py` and owns

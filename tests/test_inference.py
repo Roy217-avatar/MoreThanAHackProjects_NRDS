@@ -107,6 +107,29 @@ class InferenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             infer(sequence, [(1, 0, 2)])
 
+    def test_offline_backfill_starts_only_confirmed_control(self):
+        config = dict(CONFIG, control_backfill=True, evidence_gap_frames=0)
+        sequence = [evidence("H") for _ in range(3)]
+        sequence += [evidence("A"), evidence("H")]
+        sequence += [evidence("A") for _ in range(3)]
+        labels, reasons = model_infer(sequence, [(1, 0, 7)], config)
+        self.assertEqual(labels, ["H"] * 5 + ["A"] * 3)
+        self.assertEqual(reasons[5:7], ["control_backfilled"] * 2)
+
+    def test_offline_backfill_resets_at_dead_ball_and_halftime(self):
+        config = dict(CONFIG, control_backfill=True, evidence_gap_frames=0)
+        sequence = [evidence("H") for _ in range(3)]
+        sequence += [evidence("A"), evidence("A")]
+        sequence += [evidence("H", stationary_set_piece=True)]
+        sequence += [evidence("A") for _ in range(3)]
+        labels, _ = model_infer(sequence, [(1, 0, 5), (2, 6, 8)], config)
+        self.assertEqual(labels, ["H"] * 5 + ["D"] + ["A"] * 3)
+
+    def test_offline_backfill_requires_uninterrupted_candidate_run(self):
+        config = dict(CONFIG, control_backfill=True, evidence_gap_frames=1)
+        with self.assertRaisesRegex(ValueError, "control_backfill"):
+            model_infer([evidence("H") for _ in range(3)], [(1, 0, 2)], config)
+
 
 if __name__ == "__main__":
     unittest.main()

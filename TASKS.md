@@ -14,6 +14,8 @@ Public-window scores were never used for selection.
 
 Current local output: `evaluation/results/temporal_v2.csv` (ignored by Git), SHA-256
 `dce2ebdb60ecf31967907e7fdb031eafb5533c5642561239cdc285ca149a0c9f`.
+The experimental external-tuned v4 output is `evaluation/results/temporal_v4.csv`
+(ignored), SHA-256 `9b14309313b4d5e163d8513b06c1c87afcfbb489b3259f3f7f647d5a4955a655`.
 The v1 output remains byte-identical to its 2026-11-09 artifact. V2 changes only
 confirmed stationary set-piece timing and has no established accuracy gain.
 The tactical ATD and tagging inputs are present only under ignored `data/tactical/` in this
@@ -130,7 +132,7 @@ are not available. No performance improvement over the official baseline has bee
 - Scope: external-data provenance, separate 10 fps adapter, provider-label agreement and coverage, reproducible aggregate comparison; keep official challenge code and output unchanged.
 - Acceptance criteria: process 10 closed matches with date and H/A mapping; document source, revision, license, label provenance and definition limits; synthetic adapter tests and full suite pass; record per-match results and fingerprints. Do not call automatic provider fields verified ground truth or select a new configuration from them.
 - Verification: `docs/verification/TASK-006.md` records source identity, code/configuration and input hashes, commands, aggregate results, full-suite result and repeat hash.
-- Evidence: 10 closed SkillCorner matches, 648,120 frames, processed with the fixed v2 model. Agreement with provider H/A fields was 250,979 / 314,964 (79.7%); agreement on provider live-phase frames was 263,178 / 309,236 (85.1%). Repeated aggregate output matched SHA-256 `70d119164aeab6e1a57a86066612fcff7e1769c9b43a6e827d7c33927c08ef6f`. Full Python suite: 40 tests passed; existing BAR-ATH v2 CSV passed official format validation. These are noisy-provider agreement checks, not official accuracy or `spellF1`.
+- Evidence: 10 closed SkillCorner matches, 648,120 frames, processed with the fixed v2 model. Agreement with provider H/A fields was 250,979 / 314,964 (79.7%); agreement on provider live-phase frames was 263,178 / 309,236 (85.1%). Initial repeat hash was `70d119164aeab6e1a57a86066612fcff7e1769c9b43a6e827d7c33927c08ef6f`; after TASK-010 added aggregate diagnostics, the same agreement counts re-generated with current artifact hash `1493abcafa28487da0fbd710e7187e9c41347fda08ae65c7f857d1ab1a85ccc8`. The original 40-test suite and official v2 format validation passed. These are noisy-provider agreement checks, not official accuracy or `spellF1`.
 - Artifact: `docs/verification/TASK-006-results.json` (safe aggregates and fingerprints only); raw external files stay under ignored `data/external/skillcorner/`.
 - Blocker: none for this scoped comparison. Independent human-labeled data is still needed to validate model quality or choose new parameters.
 - Last updated: 2026-11-10
@@ -149,3 +151,18 @@ are not available. No performance improvement over the official baseline has bee
 - Blocker: team name and final method selection are outstanding; publication and form submission require separate authorization.
 - Last updated: 2026-11-10
 - Handoff: check upstream revision before final preparation; ask the owner for the registered team name and submission authorization when the package is ready.
+
+### TASK-010 — Tune temporal settings on external matches
+- Status: done
+- Priority: P1
+- Owner: Codex
+- Depends on: TASK-006; public SkillCorner development and holdout matches
+- Goal: Search a small predeclared configuration grid for higher agreement with external provider team labels, then assess the selected candidate on unseen matches.
+- Scope: external-only tuning runner and tests, versioned candidate config, holdout report, reproducible tactical output if retained. Preserve official baseline/evaluator and existing v2 output.
+- Acceptance criteria: source and match split are fixed before tuning; only ten development matches select parameters; nine additional matches are held out until selection; no challenge public labels are used for selection; report both provider-reference agreement and coverage, plus transition/dead diagnostics; do not call provider agreement challenge accuracy. A ~90% agreement target is aspirational, not a completion claim.
+- Verification: synthetic tests, full suite, repeat aggregate hash; if a new tactical CSV is generated, exact official validator and repeat generation hash; review diff and record commands/results in `docs/verification/TASK-010.md`.
+- Evidence: 144-setting development search selected v3; one exploratory offline backfill rule yielded v4 before holdout scoring. Frozen v4 matched 241,131 / 290,725 provider H/A frames (82.94%) across nine held-out matches versus 240,264 / 290,725 (82.64%) for v2. Provider live-phase agreement was 88.72%. The ~90% per-frame target was not met. The v4 BAR-ATH CSV passed the official 199,319-row format validator and repeated with SHA-256 `9b14309313b4d5e163d8513b06c1c87afcfbb489b3259f3f7f647d5a4955a655`. The nine-match holdout report repeated byte-for-byte, SHA-256 `d80eb68a27f4117de9d59a1ac1a452c83132d2d358b6a5dd1894e6b4b1a18289`. Full suite: 50 tests passed; `git diff --check` passed. Commands and limits are in `docs/verification/TASK-010.md`.
+- Artifact: `model/config_v3.json`, `model/config_v4.json`, aggregate reports under `docs/verification/TASK-010-*.json`, ignored `evaluation/results/temporal_v4.csv` and separate ignored diagnostics.
+- Blocker: none for this tuning/format-verification task; independent human-labeled validation and official ranking evidence remain unavailable.
+- Last updated: 2026-11-10
+- Handoff: prepare TASK-007 once the registered team name and final method choice are available. Seek independent human-labeled matches before calling v4 a quality gain or expanding supervised tuning. Do not report a 90% or official-score claim.

@@ -27,6 +27,12 @@ class TemporalTests(unittest.TestCase):
             path.write_text(json.dumps(dict(CONFIG, set_piece_backfill="true")))
             with self.assertRaisesRegex(ValueError, "set_piece_backfill"):
                 load_config(path)
+            path.write_text(json.dumps(dict(CONFIG, control_backfill="true")))
+            with self.assertRaisesRegex(ValueError, "control_backfill"):
+                load_config(path)
+            path.write_text(json.dumps(dict(CONFIG, control_backfill=True)))
+            with self.assertRaisesRegex(ValueError, "control_backfill"):
+                load_config(path)
 
     def test_frame_conversion_and_strict_raw_indexing(self):
         self.assertEqual(video_frame_of(1), 0)

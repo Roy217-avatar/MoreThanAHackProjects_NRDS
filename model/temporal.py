@@ -28,6 +28,10 @@ def load_config(path):
             raise ValueError("{} must be a nonnegative frame count".format(name))
     if not isinstance(config.get("set_piece_backfill", False), bool):
         raise ValueError("set_piece_backfill must be a boolean")
+    if not isinstance(config.get("control_backfill", False), bool):
+        raise ValueError("control_backfill must be a boolean")
+    if config.get("control_backfill", False) and config["evidence_gap_frames"] != 0:
+        raise ValueError("control_backfill requires zero evidence_gap_frames")
     return config
 
 

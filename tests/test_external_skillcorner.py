@@ -71,6 +71,7 @@ class ExternalSkillCornerTests(unittest.TestCase):
         self.assertEqual(blocks, [(1, 1, 3), (2, 5, 6)])
         self.assertEqual(reference, [None, None, "H", "A", None, None, None])
         self.assertEqual(evidence[2]["candidate"], "H")
+        self.assertEqual(evidence[2]["nearest_distance_m"], {"H": 1.0, "A": 8.0})
         self.assertEqual(evidence[2]["ball_xy"], (0.5, 0.5))
         self.assertTrue(evidence[3]["outside"])
         self.assertEqual((evidence[5]["ball_seen"], evidence[5]["players_seen"]),
@@ -95,6 +96,21 @@ class ExternalSkillCornerTests(unittest.TestCase):
         self.assertEqual(len(evidence), 8)
         self.assertEqual(blocks[-1], (2, 5, 6))
         self.assertIsNone(reference[7])
+
+    def test_reports_one_missing_terminal_tracking_frame_without_fabricating_it(self):
+        self.rows.pop()
+        self.write_fixture()
+        evidence, blocks, reference, match = adapter.load_match(self.meta,
+                                                                 self.tracking,
+                                                                 self.config)
+        self.assertEqual(len(evidence), 6)
+        self.assertEqual(len(reference), 6)
+        self.assertEqual(blocks[-1], (2, 5, 5))
+        self.assertEqual(match["_tracking_audit"]["missing_terminal_frames"], 1)
+        self.rows.pop()
+        self.write_fixture()
+        with self.assertRaisesRegex(ValueError, "tracking ends before"):
+            adapter.load_match(self.meta, self.tracking, self.config)
 
     def test_maps_half_open_live_phases_without_inventing_dead_labels(self):
         self.write_phases()
@@ -143,6 +159,19 @@ class ExternalSkillCornerTests(unittest.TestCase):
         self.assertEqual(result["temporal_labels"]["X"], 2)
         self.assertIn("tracking_sha256", result)
         self.assertEqual(result["live_phase"]["reference_team_frames"], 4)
+
+    def test_counts_only_within_period_confirmed_team_transitions(self):
+        self.config["control_frames"] = 2
+        self.rows[3] = self.row(3, 1, "away team", 202,
+                                players=[{"player_id": 101, "x": 8, "y": 0,
+                                          "is_detected": True},
+                                         {"player_id": 202, "x": 1, "y": 0,
+                                          "is_detected": True}])
+        self.write_fixture()
+        self.write_phases()
+        result = adapter.evaluate_match(self.meta, self.tracking, self.phases,
+                                        self.config)
+        self.assertEqual(result["home_away_transitions"], 1)
 
     def test_command_writes_aggregate_json_only(self):
         self.write_fixture()
