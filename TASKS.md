@@ -17,9 +17,10 @@ Current local output: `evaluation/results/temporal_v2.csv` (ignored by Git), SHA
 The v1 output remains byte-identical to its 2026-11-09 artifact. V2 changes only
 confirmed stationary set-piece timing and has no established accuracy gain.
 The tactical ATD and tagging inputs are present only under ignored `data/tactical/` in this
-workspace; a fresh clone needs the authorized bundle. External labeled match data, a registered
-team name, and a final technical document are not yet available. No performance improvement over
-the official baseline has been established.
+workspace; a fresh clone needs the authorized bundle. Ten public SkillCorner matches are now
+available under ignored `data/external/skillcorner/` for provider-agreement diagnostics, but
+independent human-labeled external data, a registered team name, and a final technical document
+are not available. No performance improvement over the official baseline has been established.
 
 ### TASK-001 — Establish official scorer and isolated environment
 - Status: done
@@ -120,19 +121,20 @@ the official baseline has been established.
 - Last updated: 2026-11-09
 - Handoff: interface integrated in `model/temporal.py`; no performance claim until eligible external validation.
 
-### TASK-006 — Validate model choices on eligible external data
-- Status: blocked
+### TASK-006 — Compare fixed model on public external matches
+- Status: done
 - Priority: P1
-- Owner: unassigned
-- Depends on: TASK-005; accessible external labeled match data
-- Goal: Compare model variants and select parameters using a match other than the provided BAR-ATH game.
-- Scope: external-data provenance, mapping into the same possession definition, evaluation and parameter-selection record.
-- Acceptance criteria: source, license/access, annotation provenance and quantity are documented; comparisons use external labels only; results and the chosen configuration are reproducible.
-- Verification: record dataset identity, code/configuration hashes, commands and results in `docs/verification/TASK-006.md`.
-- Evidence: pending; no eligible external labeled data has been identified.
-- Blocker: accessible labeled external game with compatible possession definitions is unavailable.
-- Last updated: 2026-11-08
-- Handoff: identify eligible data or explicitly defer supervised validation; do not claim the current model beats the baseline.
+- Owner: Codex
+- Depends on: TASK-005; public SkillCorner open data
+- Goal: Compare the fixed temporal model with provider possession fields across 10 external matches, without tuning on the challenge public window.
+- Scope: external-data provenance, separate 10 fps adapter, provider-label agreement and coverage, reproducible aggregate comparison; keep official challenge code and output unchanged.
+- Acceptance criteria: process 10 closed matches with date and H/A mapping; document source, revision, license, label provenance and definition limits; synthetic adapter tests and full suite pass; record per-match results and fingerprints. Do not call automatic provider fields verified ground truth or select a new configuration from them.
+- Verification: `docs/verification/TASK-006.md` records source identity, code/configuration and input hashes, commands, aggregate results, full-suite result and repeat hash.
+- Evidence: 10 closed SkillCorner matches, 648,120 frames, processed with the fixed v2 model. Agreement with provider H/A fields was 250,979 / 314,964 (79.7%); agreement on provider live-phase frames was 263,178 / 309,236 (85.1%). Repeated aggregate output matched SHA-256 `70d119164aeab6e1a57a86066612fcff7e1769c9b43a6e827d7c33927c08ef6f`. Full Python suite: 40 tests passed; existing BAR-ATH v2 CSV passed official format validation. These are noisy-provider agreement checks, not official accuracy or `spellF1`.
+- Artifact: `docs/verification/TASK-006-results.json` (safe aggregates and fingerprints only); raw external files stay under ignored `data/external/skillcorner/`.
+- Blocker: none for this scoped comparison. Independent human-labeled data is still needed to validate model quality or choose new parameters.
+- Last updated: 2026-11-10
+- Handoff: prepare TASK-007 submission document once the registered team name is known; seek a compatible independent labeled match before claiming any model gain.
 
 ### TASK-007 — Prepare the reproducible submission package
 - Status: planned

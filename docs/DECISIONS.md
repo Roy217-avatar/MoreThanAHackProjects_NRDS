@@ -36,3 +36,18 @@ meaning of a sustained stationary-ball cue, not from the supplied game's public 
 output diagnostics. The new configuration is `model/config_v2.json`; the original configuration
 and v1 output remain reproducible. No eligible external labeled game was available to establish
 whether this change improves possession accuracy or spellF1.
+
+## 2026-11-10 — Keep the SkillCorner comparison diagnostic separate
+
+Use the public SkillCorner open-data tracking and phase files for a ten-match external
+agreement check, at a pinned upstream revision. Apply the existing v2 model unchanged;
+scale only time-based frame counts from 25 fps to the source's 10 fps. Preserve the source
+frame timeline, metadata team mapping, and half boundaries. Compare on frames where the
+provider supplies H/A; never turn missing provider labels or absent phases into `D`.
+
+SkillCorner's possession and phase fields are provider-generated, not independent human
+ground truth. They have different coverage and semantics from the challenge labels. The
+comparison can expose disagreements and data-quality issues, but cannot justify an official
+ranking claim or establish dead-ball recall. No thresholds are changed or selected from it;
+the next validation step requires a compatible independently annotated match. The adapter
+and aggregate report remain separate from the challenge submission pipeline.

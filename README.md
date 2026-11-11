@@ -69,5 +69,22 @@ These are general, conservative engineering defaults, **not fitted parameters**.
 uses only set-piece tags from the automatic tagging; it does not yet use homography, team motion,
 or video. In particular, it will miss many stoppages whose ball is missing rather than tracked
 outside the pitch or stationary in a set-piece interval, and it can delay fast turnovers.
-It has no external-match validation, so it has no demonstrated performance gain over the baseline.
+It has an external provider-agreement diagnostic on ten SkillCorner matches, but no independent
+human-labeled validation or demonstrated competition-score gain over the official baseline.
 See [data audit](docs/DATA_AUDIT.md), [tasks](TASKS.md), and verification records in `docs/verification/`.
+
+## External-match comparison (TASK-006)
+
+`model/compare_skillcorner.py` maps public SkillCorner 10 fps broadcast tracking to the same
+evidence contract. It scales only the frame-count durations from 25 fps to 10 fps; pitch distances
+stay in metres. The original tactical model, configuration, official baseline and evaluator are
+unchanged. The comparison uses SkillCorner's automatic per-frame possession field and its
+in-play phase intervals as **provider references**, not verified ground truth. Gaps in either
+reference are unknown, not dead-ball labels. The output contains aggregate counts and input
+fingerprints only; no tracking or frame-level prediction export is committed.
+
+Download the ten public matches at the pinned SkillCorner revision and run the exact commands in
+[`docs/verification/TASK-006.md`](docs/verification/TASK-006.md). The aggregate result is
+[`docs/verification/TASK-006-results.json`](docs/verification/TASK-006-results.json). This is
+not the official `spellF1` scorer, and its agreement figures must not be used to claim a higher
+challenge ranking. The comparison makes no parameter choice and uses no challenge public labels.
