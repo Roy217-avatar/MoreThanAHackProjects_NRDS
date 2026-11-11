@@ -113,7 +113,7 @@ SHA-256 `9b14309313b4d5e163d8513b06c1c87afcfbb489b3259f3f7f647d5a4955a655`.
 Relative to v2, 8,759 labels changed; direct H/A transitions within halves rose from
 259 to 294. This is a fragmentation diagnostic, not proof of improved possession quality.
 
-Run from the inner repository root. The ten development downloads are documented in
+Run from the repository root. The ten development downloads are documented in
 [`TASK-006.md`](TASK-006.md). The additional nine public files can be fetched at the same
 pinned SkillCorner revision; all raw inputs remain ignored under `data/`.
 

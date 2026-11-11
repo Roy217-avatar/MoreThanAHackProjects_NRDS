@@ -1,7 +1,9 @@
-# Task board — 2026-11-10
+# Task board — 2026-11-11
 
 The upstream public starter is pinned at `f8f2629ff1e0985f81d7e59d8413678514ee1530`.
 Statuses describe completed work in this checkout; no private-match score or organizer submission exists.
+The project Git root is now `/Users/nathanaelsagala/MoreThanAHackProjects_NRDS`;
+the former nested folder was moved here on 2026-11-11 (TASK-011).
 
 ## Coordinated work (2026-11-09)
 
@@ -166,3 +168,17 @@ are not available. No performance improvement over the official baseline has bee
 - Blocker: none for this tuning/format-verification task; independent human-labeled validation and official ranking evidence remain unavailable.
 - Last updated: 2026-11-10
 - Handoff: prepare TASK-007 once the registered team name and final method choice are available. Seek independent human-labeled matches before calling v4 a quality gain or expanding supervised tuning. Do not report a 90% or official-score claim.
+
+### TASK-011 — Isolate the project Git repository
+- Status: done
+- Priority: P1
+- Owner: Codex
+- Depends on: none
+- Goal: Make this folder the project Git root and stop unrelated folders under the home directory from inheriting a Git repository.
+- Scope: preserve the nested project's Git history, move its files into this folder, disable the home Git root, retain recoverable backups, and update stale path instructions.
+- Acceptance criteria: this folder resolves to itself as Git root with project HEAD intact; the home folder is no longer a Git repository; project inputs and environment still work; prediction output is unchanged.
+- Verification: `docs/verification/TASK-011.md`.
+- Evidence: 50 tests passed; official validator accepted the existing 199,319-row v4 CSV; regenerated v4 CSV matched SHA-256 `9b14309313b4d5e163d8513b06c1c87afcfbb489b3259f3f7f647d5a4955a655` byte for byte; Git root and HEAD checks passed.
+- Blocker: none. VS Code may need its old window reloaded to clear cached repository discovery.
+- Last updated: 2026-11-11
+- Handoff: open this folder directly in a new VS Code window; keep the recoverable Git backups until the user is satisfied with the workspace behavior.

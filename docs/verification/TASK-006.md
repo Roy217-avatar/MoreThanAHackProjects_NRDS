@@ -68,7 +68,7 @@ an accessible, independently annotated match with a compatible live/dead possess
 
 ## Reproduce
 
-Run from the inner repository root using the existing `.venv` and
+Run from the repository root using the existing `.venv` and
 `requirements-lock.txt`. Public downloads total roughly 1 GB and stay under ignored `data/`.
 Do not commit raw files or frame-level derivatives.
 
