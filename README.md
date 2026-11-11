@@ -14,13 +14,16 @@ environment; `requirements.txt` remains the upstream dependency list.
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-lock.txt
-.venv/bin/python evaluation/run_evaluation.py --no-detail
+baseline_dir=$(mktemp -d)
+cp evaluation/results/baseline_*.csv "$baseline_dir/"
+.venv/bin/python evaluation/run_evaluation.py --results "$baseline_dir" --out "$baseline_dir" --no-detail
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-The scorer reads the four included baseline CSVs and the public five-minute ground truth. The
-public window checks the pipeline and must never select model parameters or variants. The full
-match score is private.
+The isolated scorer command reads only the four included baseline CSVs and the public five-minute
+ground truth. The public window checks the pipeline and must never select model parameters or variants. The full
+match score is private. The default results directory can contain local model CSVs, so use the
+isolated directory for a baseline-only run.
 
 ## Match assets and generation
 
@@ -34,26 +37,32 @@ export MTAH_DATA_DIR=/absolute/path/to/authorized/bundle
 .venv/bin/python -c 'from starter.load_atd import check_alignment_raw; print(check_alignment_raw())'
 .venv/bin/python starter/baseline.py --out evaluation/generated_baseline
 .venv/bin/python evaluation/validate_submission.py evaluation/generated_baseline/baseline_smooth50.csv
-.venv/bin/python model/run.py --config model/config.json
-.venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v1.csv
-shasum -a 256 evaluation/results/temporal_v1.csv
+.venv/bin/python model/run.py --config model/config_v2.json --output evaluation/results/temporal_v2.csv --diagnostics evaluation/reports/temporal_v2_diagnostics.csv
+.venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v2.csv
+shasum -a 256 evaluation/results/temporal_v2.csv
 ```
 
-Repeat the model generation and hash command with identical inputs and config to check byte
-reproduction. `model/run.py` writes diagnostics to `evaluation/reports/temporal_v1_diagnostics.csv`;
-those are separate from the two-column prediction. Input file hashes should be recorded alongside
-the run. The model uses no random seed.
+Repeat generation to a second output path with identical inputs and config, then compare the two
+hashes. Diagnostics are separate from the two-column prediction. Input file hashes should be
+recorded alongside the run. The model uses no random seed. `model/config.json` preserves the
+earlier v1 behavior and output; see `docs/verification/TASK-005.md`.
 
 ## Prototype behavior
 
-`model/config.json` records all thresholds. Per frame, the model measures distances from the ball
-to the nearest observed player of each team after scaling normalized pitch coordinates to metres.
+`model/evidence.py` loads ATD and automatic tags into strict zero-based frame records;
+`model/inference.py` applies the temporal state machine; `model/temporal.py` serializes labels and
+separate reason-code diagnostics. The interface is in `docs/INTERFACE.md`.
+`model/config_v2.json` records all thresholds and enables offline set-piece backfill. Per frame,
+the model measures distances from the ball to the nearest observed player of each team after
+scaling normalized pitch coordinates to metres.
 A candidate must be within 2 m of the ball and at least 0.75 m nearer than the other team's closest
 player. Twelve observed candidate frames are needed to establish or transfer control; gaps up to
 five frames do not discard accumulated evidence. Missing ball observations never imply dead play.
 An out-of-bounds ball sustained for 25 frames yields `D`. A ball observed within a 0.5 m
 region for 25 frames during an automatic set-piece tag also yields `D`; a tag by itself is never
-copied into the labels. A restart needs confirmed control.
+copied into the labels. In v2, once that full observed stationary window is confirmed, its earlier
+frames are also labeled `D`. Short, interrupted, unobserved, and halftime-crossing windows are not
+backfilled. A restart needs confirmed control.
 Each half resets independently; outside the graded half blocks output is `X`.
 
 These are general, conservative engineering defaults, **not fitted parameters**. The prototype

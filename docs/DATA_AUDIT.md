@@ -22,6 +22,15 @@ The published graded count is 94,214/158,857; player presence is published as an
 on graded frames and may exceed 22 due to duplicate tracks. Player-gap statistics were not
 independently recomputed.
 
+The `model.evidence.load_tactical_evidence` scan of the authorized tactical inputs on 2026-11-09
+returned exactly 199,319 ordered records and metadata names `(Barcelona, Atletic Club)`. It
+found 4,518 finite ball positions outside the configured pitch tolerance, 153,785 frames with
+no confident nearest-team candidate, and 902 frames with sustained observed stationary-ball
+evidence inside automatic set-piece intervals. These are input/evidence diagnostics, not
+possession labels or accuracy measures. The scan found no frame with zero observed player
+slots, but individual slots still contain missing positions. Homography and the Excel export
+remain unavailable locally and were not used by this model.
+
 Input SHA-256: metadata `327e35e32e46a647389b88f883d4f9a2ab931e3e6148aef2fcf8f22b1e93c43a`,
 raw tracking `f130e350d2bfdf734b7e32f072931fccc6d015c1e837d082064875fe0a700431`,
 tagging `0594d35e3df01b9c5002372d8615e2e8ef5379ac8f4e84c5ef7a53f4304c9019`.

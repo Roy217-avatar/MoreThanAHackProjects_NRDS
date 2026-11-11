@@ -1,9 +1,10 @@
 import csv
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
-from model.temporal import add_set_piece_evidence, evidence_from_line, infer, write_submission
+from model.temporal import add_set_piece_evidence, evidence_from_line, infer, load_config, write_submission
 from starter.load_atd import frame_id_of, video_frame_of
 
 
@@ -20,6 +21,13 @@ def row(candidate=None, outside=False, ball_seen=True):
 
 
 class TemporalTests(unittest.TestCase):
+    def test_backfill_configuration_requires_boolean(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "config.json"
+            path.write_text(json.dumps(dict(CONFIG, set_piece_backfill="true")))
+            with self.assertRaisesRegex(ValueError, "set_piece_backfill"):
+                load_config(path)
+
     def test_frame_conversion_and_strict_raw_indexing(self):
         self.assertEqual(video_frame_of(1), 0)
         self.assertEqual(frame_id_of(199318), 199319)
@@ -72,6 +80,15 @@ class TemporalTests(unittest.TestCase):
         untagged = [row("H") for _ in range(3)]
         add_set_piece_evidence(untagged, [], [(1, 0, 2)], CONFIG, (105.3, 68))
         self.assertFalse(any(r["stationary_set_piece"] for r in untagged))
+
+    def test_backfilled_set_piece_starts_dead_interval_at_window_start(self):
+        config = dict(CONFIG, set_piece_backfill=True)
+        sequence = [row("H") for _ in range(6)]
+        events = [{"code": "SET PIECES", "start_frame": 3, "end_frame": 6}]
+        add_set_piece_evidence(sequence, events, [(1, 0, 5)], config, (105.3, 68))
+        labels, reasons = infer(sequence, [(1, 0, 5)], config)
+        self.assertEqual(labels, ["X", "X", "H", "D", "D", "D"])
+        self.assertEqual(reasons[3:], ["stationary_set_piece"] * 3)
 
     def test_serialization(self):
         with tempfile.TemporaryDirectory() as directory:

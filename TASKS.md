@@ -1,18 +1,21 @@
-# Task board — 2026-11-08 handoff
+# Task board — 2026-11-10
 
 The upstream public starter is pinned at `f8f2629ff1e0985f81d7e59d8413678514ee1530`.
 Statuses describe completed work in this checkout; no private-match score or organizer submission exists.
 
-## Start here tomorrow (2026-11-09)
+## Coordinated work (2026-11-09)
 
-The next ready task is **TASK-005**. Review the current model's dead-ball and turnover logic,
-add focused synthetic tests, and improve the algorithm only where a general rule justifies it.
-Do not use the public five-minute labels or this match's output diagnostics to choose thresholds.
-After a change, generate the ignored CSV twice, compare hashes, validate the exact final file,
-and update the task's verification record. Exact commands are in `README.md`.
+The lead established `docs/INTERFACE.md` before delegating. On 2026-11-09, the data agent owned
+`model/evidence.py`, `tests/test_evidence.py`, and data-audit notes (TASK-008).
+The model agent owned `model/inference.py` and `tests/test_inference.py` (TASK-009).
+The lead handled integration, and a read-only review agent inspected the result. The
+2026-11-10 TASK-005 extension is lead-owned. Official starter/evaluator files are unchanged.
+Public-window scores were never used for selection.
 
-Current local output: `evaluation/results/temporal_v1.csv` (ignored by Git), SHA-256
-`fe13eb9a04a544532c757bac2e6df0cc3f63f68c40f48384ca218a0e9b677c78`.
+Current local output: `evaluation/results/temporal_v2.csv` (ignored by Git), SHA-256
+`dce2ebdb60ecf31967907e7fdb031eafb5533c5642561239cdc285ca149a0c9f`.
+The v1 output remains byte-identical to its 2026-11-09 artifact. V2 changes only
+confirmed stationary set-piece timing and has no established accuracy gain.
 The tactical ATD and tagging inputs are present only under ignored `data/tactical/` in this
 workspace; a fresh clone needs the authorized bundle. External labeled match data, a registered
 team name, and a final technical document are not yet available. No performance improvement over
@@ -74,19 +77,48 @@ the official baseline has been established.
 - Last updated: 2026-11-08
 - Handoff: evaluate dead-ball detection and turnovers on eligible external games; do not tune to the public five minutes.
 
-### TASK-005 — Strengthen temporal possession inference
-- Status: ready
+### TASK-005 — Harden and extend temporal possession inference
+- Status: done
 - Priority: P1
-- Owner: unassigned
-- Depends on: TASK-004
-- Goal: Improve general dead-ball, restart, and controlled-turnover behavior without fitting to this match's public labels.
-- Scope: `model/`, versioned configuration, synthetic tests, model rationale and diagnostics.
-- Acceptance criteria: new behavior has a general rule and synthetic edge-case tests; missing ball never implies dead play; incidental touches do not flip possession; halftime state resets; full-length output validates and repeats with an identical hash.
-- Verification: unit tests, official validator on the exact generated CSV, two generation hashes, aggregate diagnostics and diff review; record results in `docs/verification/TASK-005.md`.
-- Evidence: pending; current prototype and six passing tests are recorded under TASK-003/004.
-- Blocker: none for synthetic and algorithm work; accuracy claims require TASK-006.
-- Last updated: 2026-11-08
-- Handoff: claim TASK-005 first tomorrow; preserve `temporal_v1.csv` as the existing reference and version any changed output/configuration separately.
+- Owner: lead (integration)
+- Depends on: TASK-004, TASK-008, TASK-009
+- Goal: Keep the verified separated pipeline and add a general offline timing rule that starts a confirmed stationary set-piece dead interval at the beginning of its observed window.
+- Scope: `model/evidence.py`, model docstrings, `model/temporal.py`, versioned configuration, synthetic tests, model rationale and diagnostics; preserve the v1 files and official starter/evaluator.
+- Acceptance criteria: a short or interrupted stationary/tagged run remains insufficient; a sustained observed run can backfill only within the same half; existing v1 predictions remain reproducible; new full-length output validates and repeats with an identical hash; diff review finds no unresolved correctness issue.
+- Verification: `.venv/bin/python -m unittest discover -s tests -v`; `.venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v2.csv`; repeat v2 generation and compare SHA-256; inspect aggregate diagnostics and diff. Full record: `docs/verification/TASK-005.md`.
+- Evidence: PASS, 30 tests and official validation of 199,319 ordered H/A/D/X rows. Two v2 runs matched SHA-256 `dce2ebdb60ecf31967907e7fdb031eafb5533c5642561239cdc285ca149a0c9f`; the v1 re-run matched its prior hash. Exactly 689 labels changed to `D` under confirmed stationary set-piece evidence. No public-window or private-match score was used to select v2. The diff was reviewed.
+- Artifact: ignored `evaluation/results/temporal_v2.csv`; separate diagnostics at `evaluation/reports/temporal_v2_diagnostics.csv`; configuration `model/config_v2.json`.
+- Blocker: none for TASK-005 completion. Accuracy claims remain unverified without eligible external labeled data (TASK-006).
+- Last updated: 2026-11-10
+- Handoff: TASK-006 is next: obtain an eligible labeled match from another game, document its provenance, then assess possession and dead-ball timing. Do not infer an accuracy gain from the 689 changed frames or transition counts.
+
+### TASK-008 — Extract and audit tactical frame evidence
+- Status: done
+- Priority: P1
+- Owner: data agent
+- Depends on: TASK-004; `docs/INTERFACE.md`
+- Goal: Return strict, documented per-frame tracking and tagging evidence for inference.
+- Scope: `model/evidence.py`, `tests/test_evidence.py`, data-audit notes only.
+- Acceptance criteria: exact tactical frame count and 1→0 indexing; metadata-based H/A slot mapping; normalized-to-metre distance scaling; explicit missingness; set-piece evidence requires observed stationary ball; malformed input fails loudly.
+- Verification: red/green synthetic tests, full Python test suite, official raw alignment check, aggregate input audit; report commands/results to lead.
+- Evidence: six focused tests and the 26-test suite passed on 2026-11-09; real tactical scan returned 199,319 ordered records, correct team names, and 113,488 observed balls. Audit and input hashes are in `docs/DATA_AUDIT.md`; the later 30-test TASK-005 check is in `docs/verification/TASK-005.md`.
+- Blocker: none; authorized tactical ATD/tagging files are local and ignored.
+- Last updated: 2026-11-09
+- Handoff: interface integrated in `model/temporal.py`; homography and Excel remain unavailable locally.
+
+### TASK-009 — Extract and harden temporal inference
+- Status: done
+- Priority: P1
+- Owner: model agent
+- Depends on: TASK-004; `docs/INTERFACE.md`
+- Goal: Convert agreed evidence records into coherent H/A/D/X labels with reason codes.
+- Scope: `model/inference.py`, `tests/test_inference.py` only.
+- Acceptance criteria: same-team passes retain control; incidental opposing touches do not switch it; sustained opposing control does; missing ball is not dead; dead/restart and halftime state reset work; invalid block boundaries fail loudly.
+- Verification: red/green synthetic tests and full Python test suite; report commands/results to lead.
+- Evidence: 12 focused tests and the 26-test suite passed on 2026-11-09, including malformed boundaries/candidates, missingness, turnover and restart behavior; the later 30-test TASK-005 check is in `docs/verification/TASK-005.md`.
+- Blocker: none; synthetic evidence follows the interface.
+- Last updated: 2026-11-09
+- Handoff: interface integrated in `model/temporal.py`; no performance claim until eligible external validation.
 
 ### TASK-006 — Validate model choices on eligible external data
 - Status: blocked
@@ -111,7 +143,7 @@ the official baseline has been established.
 - Scope: final configuration, input/code/dependency fingerprints, technical document, restricted-data review and delivery checklist.
 - Acceptance criteria: exact team-named CSV passes the official validator; repeated generation hashes match; document covers approach, assets, training-data provenance, possession rules, limitations and reproduction; no restricted assets or reconstructive exports are tracked.
 - Verification: official validator, repeat hash, clean-clone reproduction instructions, diff and Git content review; record in `docs/verification/TASK-007.md`.
-- Evidence: pending; current `temporal_v1.csv` is a validated prototype, not a final team-named submission.
+- Evidence: pending; current `temporal_v2.csv` is a validated prototype, not a final team-named submission.
 - Blocker: team name and final method selection are outstanding; publication and form submission require separate authorization.
-- Last updated: 2026-11-08
+- Last updated: 2026-11-10
 - Handoff: check upstream revision before final preparation; ask the owner for the registered team name and submission authorization when the package is ready.
