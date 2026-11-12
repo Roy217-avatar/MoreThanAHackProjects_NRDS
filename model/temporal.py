@@ -32,6 +32,12 @@ def load_config(path):
         raise ValueError("control_backfill must be a boolean")
     if config.get("control_backfill", False) and config["evidence_gap_frames"] != 0:
         raise ValueError("control_backfill requires zero evidence_gap_frames")
+    if config.get('stationary_unattended_frames') is not None:
+        if (not isinstance(config['stationary_unattended_frames'], int)
+                or config['stationary_unattended_frames'] < 2
+                or config['stationary_unattended_radius_m'] < 0
+                or config['stationary_unattended_min_player_m'] < 0):
+            raise ValueError('invalid stationary unattended settings')
     return config
 
 

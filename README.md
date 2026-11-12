@@ -128,3 +128,31 @@ The [methods and accuracy report](docs/verification/TASK-012.md) contains match 
 and teams, exact counts/formulas, download and execution commands, hashes and limitations.
 The candidate tactical CSV is ignored at `evaluation/results/temporal_v5_external.csv`;
 it passed the official format validator and repeat generation matched byte for byte.
+
+## Observed unattended stoppage candidate (TASK-013)
+
+`model/config_v6_stoppage.json` keeps the v4 control settings and adds an optional
+dead-ball cue. When the ball remains within a 0.5 m area for two seconds and the
+nearest observed player on **each** team stays at least 3 m away, the confirmed
+interval becomes D. It is computed within each half, needs actual ball and player
+observations, and cannot bridge missing frames. After D, the model waits for
+confirmed control before assigning H or A. This addresses a specific failure mode
+where a stationary, unattended ball remained assigned to a team during a stoppage.
+
+The [TASK-013 record](docs/verification/TASK-013.md) contains the external development
+diagnostic and tactical output checks. The new artifact is
+`evaluation/results/temporal_v6_stoppage.csv` (ignored).
+
+On five already-used IDSSE development matches, full H/A/D provider agreement rose
+from 63.72% to 80.92%, while live-team agreement fell from 83.74% to 81.87% and
+transitions increased. These are exploratory diagnostics, not independent test
+results or evidence of a better competition ranking.
+
+Run the tactical candidate with:
+
+```bash
+.venv/bin/python model/run.py --config model/config_v6_stoppage.json \
+  --output evaluation/results/temporal_v6_stoppage.csv \
+  --diagnostics evaluation/reports/temporal_v6_stoppage_diagnostics.csv
+.venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v6_stoppage.csv
+```

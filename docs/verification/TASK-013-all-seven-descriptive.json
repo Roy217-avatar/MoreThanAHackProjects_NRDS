@@ -1,0 +1,208 @@
+{
+  "all_seven": {
+    "abstentions": 424,
+    "accuracy": 0.8066552036415717,
+    "class_f1": {
+      "A": 0.7716515943748715,
+      "D": 0.8395772994881417,
+      "H": 0.7940842194482971
+    },
+    "confusion": {
+      "A": {
+        "A": 211997,
+        "D": 17164,
+        "H": 29891,
+        "X": 122
+      },
+      "D": {
+        "A": 48246,
+        "D": 349456,
+        "H": 51787,
+        "X": 50
+      },
+      "H": {
+        "A": 30046,
+        "D": 16298,
+        "H": 247335,
+        "X": 252
+      }
+    },
+    "correct": 808788,
+    "eligible": 1002644,
+    "live_accuracy": 0.8304607624230481,
+    "live_correct": 459332,
+    "live_frames": 553105,
+    "macro_f1": 0.8017710377704367,
+    "prediction_coverage": 0.9995771180997443,
+    "unknown": 0
+  },
+  "description": "Descriptive pooled result only: five development matches plus two previously inspected matches; not an independent validation or challenge score",
+  "previously_inspected_matches": [
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 142345,
+        "metadata_sha256": "e976aa0c5dba862cfa898ea57ec226efce9d1bc04b23b8d775908db86aa6fa41",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 69204,
+            "half": 1,
+            "last_raw": 79203
+          },
+          {
+            "first_raw": 100000,
+            "frames": 73141,
+            "half": 2,
+            "last_raw": 173140
+          }
+        ],
+        "reference_counts": {
+          "A": 47322,
+          "D": 57993,
+          "H": 37030
+        },
+        "tracking_sha256": "cbefcb0bd7f39f3b94ee69a7bc97aac0f936425062c1cc1b144733df36804d6f"
+      },
+      "away": "FC St. Pauli",
+      "candidate": {
+        "intervals": 451,
+        "labels": {
+          "A": 52027,
+          "D": 43549,
+          "H": 46711,
+          "X": 58
+        },
+        "max_interval_frames": 2115,
+        "mean_interval_seconds": 12.624833702882484,
+        "min_interval_frames": 16,
+        "score": {
+          "abstentions": 58,
+          "accuracy": 0.7776177596684113,
+          "class_f1": {
+            "A": 0.8176428549859586,
+            "D": 0.7682535305587835,
+            "H": 0.742026008765121
+          },
+          "confusion": {
+            "A": {
+              "A": 40616,
+              "D": 2039,
+              "H": 4640,
+              "X": 27
+            },
+            "D": {
+              "A": 7986,
+              "D": 39005,
+              "H": 11002,
+              "X": 0
+            },
+            "H": {
+              "A": 3425,
+              "D": 2505,
+              "H": 31069,
+              "X": 31
+            }
+          },
+          "correct": 110690,
+          "eligible": 142345,
+          "live_accuracy": 0.849831657814871,
+          "live_correct": 71685,
+          "live_frames": 84352,
+          "macro_f1": 0.775974131436621,
+          "prediction_coverage": 0.9995925392532228,
+          "unknown": 0
+        },
+        "transitions": 449
+      },
+      "date": "2022-11-05",
+      "home": "Fortuna D\u00fcsseldorf",
+      "id": "J03WQQ"
+    },
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 146810,
+        "metadata_sha256": "429b584e89df3e3e8b81f4bd0d004b38bd0b4298bb390b8fb43efccb60963e01",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 68354,
+            "half": 1,
+            "last_raw": 78353
+          },
+          {
+            "first_raw": 100000,
+            "frames": 78456,
+            "half": 2,
+            "last_raw": 178455
+          }
+        ],
+        "reference_counts": {
+          "A": 32077,
+          "D": 61494,
+          "H": 53239
+        },
+        "tracking_sha256": "70b63069189019066fb7e3d9db891122edfe787f3a43ba522ebe45ed89ea0269"
+      },
+      "away": "1. FC Kaiserslautern",
+      "candidate": {
+        "intervals": 375,
+        "labels": {
+          "A": 35380,
+          "D": 51019,
+          "H": 60352,
+          "X": 59
+        },
+        "max_interval_frames": 5305,
+        "mean_interval_seconds": 15.659733333333334,
+        "min_interval_frames": 14,
+        "score": {
+          "abstentions": 59,
+          "accuracy": 0.8226278863837613,
+          "class_f1": {
+            "A": 0.7570452288124286,
+            "D": 0.836258921191329,
+            "H": 0.8485003213282742
+          },
+          "confusion": {
+            "A": {
+              "A": 25534,
+              "D": 2195,
+              "H": 4327,
+              "X": 21
+            },
+            "D": {
+              "A": 6615,
+              "D": 47045,
+              "H": 7834,
+              "X": 0
+            },
+            "H": {
+              "A": 3231,
+              "D": 1779,
+              "H": 48191,
+              "X": 38
+            }
+          },
+          "correct": 120770,
+          "eligible": 146810,
+          "live_accuracy": 0.8641403722631159,
+          "live_correct": 73725,
+          "live_frames": 85316,
+          "macro_f1": 0.8139348237773439,
+          "prediction_coverage": 0.9995981200190722,
+          "unknown": 0
+        },
+        "transitions": 373
+      },
+      "date": "2022-11-11",
+      "home": "Fortuna D\u00fcsseldorf",
+      "id": "J03WR9"
+    }
+  ]
+}

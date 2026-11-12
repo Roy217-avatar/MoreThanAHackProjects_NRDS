@@ -1,5 +1,19 @@
 # Task board — 2026-11-11
 
+### TASK-013 — Detect observed unattended stoppages
+- Status: done
+- Priority: P1
+- Owner: Codex
+- Depends on: TASK-012
+- Goal: Stop emitting a controlling team during sustained stationary, unattended ball periods and require renewed control at restart.
+- Scope: separate stoppage evidence, optional inference cue, versioned configuration, synthetic tests, external development diagnostic, tactical artifact and verification record.
+- Acceptance criteria: no D from missing ball or short pauses; sustained cue backfills within a half; no state or backfill crosses halftime; a restart requires confirmed control; full output validates and repeats byte for byte.
+- Verification: full unit suite, official CSV validator, repeat hash, aggregate diagnostics and diff review.
+- Evidence: 70 synthetic/existing tests passed; tactical CSV passed official format validator and two runs matched SHA-256 `a6857d51e8a46628c154a9d0bbfa0ebb1ecb7ed4827f4794686cecb5c9588980`. V4 regression output retained SHA-256 `9b14309313b4d5e163d8513b06c1c87afcfbb489b3259f3f7f647d5a4955a655`. Five IDSSE development matches showed 80.92% full H/A/D provider agreement versus 63.72% v4, with lower live-team agreement and more transitions; exploratory only. A later descriptive run over all seven yielded 808,788/1,002,644 = 80.67%; the other two matches were previously inspected, so this is not a fresh holdout. Diff and leakage review passed. Details: `docs/verification/TASK-013.md`.
+- Blocker: none.
+- Last updated: 2026-11-11
+- Handoff: assess this fixed rule on new independent matches and spell metrics before claiming a challenge improvement; the earlier IDSSE holdouts cannot serve as fresh tests.
+
 The upstream public starter is pinned at `f8f2629ff1e0985f81d7e59d8413678514ee1530`.
 Statuses describe completed work in this checkout; no private-match score or organizer submission exists.
 The project Git root is now `/Users/nathanaelsagala/MoreThanAHackProjects_NRDS`;

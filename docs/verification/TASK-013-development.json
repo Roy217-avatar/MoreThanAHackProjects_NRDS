@@ -1,0 +1,745 @@
+{
+  "baseline": {
+    "abstentions": 307,
+    "accuracy": 0.6371717013156475,
+    "class_f1": {
+      "A": 0.670028695499881,
+      "D": 0.5595819530786751,
+      "H": 0.6819961986993044
+    },
+    "confusion": {
+      "A": {
+        "A": 149204,
+        "D": 7172,
+        "H": 23325,
+        "X": 74
+      },
+      "D": {
+        "A": 91292,
+        "D": 133535,
+        "H": 105175,
+        "X": 50
+      },
+      "H": {
+        "A": 25095,
+        "D": 6508,
+        "H": 171876,
+        "X": 183
+      }
+    },
+    "correct": 454615,
+    "eligible": 713489,
+    "live_accuracy": 0.8373735450673774,
+    "live_correct": 321080,
+    "live_frames": 383437,
+    "macro_f1": 0.6372022824259536,
+    "prediction_coverage": 0.9995697200657614,
+    "unknown": 0
+  },
+  "candidate": {
+    "abstentions": 307,
+    "accuracy": 0.8091617390036847,
+    "class_f1": {
+      "A": 0.7622858068714279,
+      "D": 0.8518924583038218,
+      "H": 0.7898038589137524
+    },
+    "confusion": {
+      "A": {
+        "A": 145847,
+        "D": 12930,
+        "H": 20924,
+        "X": 74
+      },
+      "D": {
+        "A": 33645,
+        "D": 263406,
+        "H": 32951,
+        "X": 50
+      },
+      "H": {
+        "A": 23390,
+        "D": 12014,
+        "H": 168075,
+        "X": 183
+      }
+    },
+    "correct": 577328,
+    "eligible": 713489,
+    "live_accuracy": 0.8187055500642869,
+    "live_correct": 313922,
+    "live_frames": 383437,
+    "macro_f1": 0.8013273746963341,
+    "prediction_coverage": 0.9995697200657614,
+    "unknown": 0
+  },
+  "config_sha256": "43e26052fa85081e72d764671509d2cbb41bb68889da722437bf657361227b03",
+  "matches": [
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 145967,
+        "metadata_sha256": "a884728647a564cf8b20e5223a1d04a5da6f6725e1e506c8651505327c197ba9",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 70708,
+            "half": 1,
+            "last_raw": 80707
+          },
+          {
+            "first_raw": 100000,
+            "frames": 75259,
+            "half": 2,
+            "last_raw": 175258
+          }
+        ],
+        "reference_counts": {
+          "A": 46258,
+          "D": 60598,
+          "H": 39111
+        },
+        "tracking_sha256": "d3dd92e509421a6466acb0a083c009035f1751bc5fd9ef42ffa8f20d01cf7d49"
+      },
+      "away": "FC Bayern M\u00fcnchen",
+      "baseline": {
+        "intervals": 357,
+        "labels": {
+          "A": 60507,
+          "D": 34213,
+          "H": 51189,
+          "X": 58
+        },
+        "max_interval_frames": 3739,
+        "mean_interval_seconds": 16.354845938375348,
+        "min_interval_frames": 17,
+        "score": {
+          "abstentions": 58,
+          "accuracy": 0.7147916994937212,
+          "class_f1": {
+            "A": 0.7626469348569288,
+            "D": 0.6556412230648343,
+            "H": 0.7207751937984496
+          },
+          "confusion": {
+            "A": {
+              "A": 40712,
+              "D": 1568,
+              "H": 3955,
+              "X": 23
+            },
+            "D": {
+              "A": 14826,
+              "D": 31081,
+              "H": 14691,
+              "X": 0
+            },
+            "H": {
+              "A": 4969,
+              "D": 1564,
+              "H": 32543,
+              "X": 35
+            }
+          },
+          "correct": 104336,
+          "eligible": 145967,
+          "live_accuracy": 0.8580983729456828,
+          "live_correct": 73255,
+          "live_frames": 85369,
+          "macro_f1": 0.7130211172400709,
+          "prediction_coverage": 0.9996026499140217,
+          "unknown": 0
+        },
+        "transitions": 355
+      },
+      "candidate": {
+        "intervals": 415,
+        "labels": {
+          "A": 49471,
+          "D": 55001,
+          "H": 41437,
+          "X": 58
+        },
+        "max_interval_frames": 3739,
+        "mean_interval_seconds": 14.06910843373494,
+        "min_interval_frames": 17,
+        "score": {
+          "abstentions": 58,
+          "accuracy": 0.840162502483438,
+          "class_f1": {
+            "A": 0.8412915626403702,
+            "D": 0.8717549459770413,
+            "H": 0.7940855142275414
+          },
+          "confusion": {
+            "A": {
+              "A": 40268,
+              "D": 2138,
+              "H": 3829,
+              "X": 23
+            },
+            "D": {
+              "A": 4584,
+              "D": 50387,
+              "H": 5627,
+              "X": 0
+            },
+            "H": {
+              "A": 4619,
+              "D": 2476,
+              "H": 31981,
+              "X": 35
+            }
+          },
+          "correct": 122636,
+          "eligible": 145967,
+          "live_accuracy": 0.8463142358467359,
+          "live_correct": 72249,
+          "live_frames": 85369,
+          "macro_f1": 0.835710674281651,
+          "prediction_coverage": 0.9996026499140217,
+          "unknown": 0
+        },
+        "transitions": 413
+      },
+      "date": "2023-05-27",
+      "home": "1. FC K\u00f6ln",
+      "id": "J03WMX"
+    },
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 141561,
+        "metadata_sha256": "5490286436c86e6f80a538d2b1b379d0efd016e0defcaf594bc59d9ef5079f4c",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 69288,
+            "half": 1,
+            "last_raw": 79287
+          },
+          {
+            "first_raw": 100000,
+            "frames": 72273,
+            "half": 2,
+            "last_raw": 172272
+          }
+        ],
+        "reference_counts": {
+          "A": 31956,
+          "D": 73184,
+          "H": 36421
+        },
+        "tracking_sha256": "56ef948961a18e150dba0b7b16869d0008ff66f3050a0c355d31fa5b8ec2fcec"
+      },
+      "away": "Bayer 04 Leverkusen",
+      "baseline": {
+        "intervals": 352,
+        "labels": {
+          "A": 53007,
+          "D": 32977,
+          "H": 55538,
+          "X": 39
+        },
+        "max_interval_frames": 5295,
+        "mean_interval_seconds": 16.086477272727272,
+        "min_interval_frames": 1,
+        "score": {
+          "abstentions": 39,
+          "accuracy": 0.603789179223091,
+          "class_f1": {
+            "A": 0.616809670091687,
+            "D": 0.570567345823796,
+            "H": 0.6303678813384226
+          },
+          "confusion": {
+            "A": {
+              "A": 26203,
+              "D": 1191,
+              "H": 4562,
+              "X": 0
+            },
+            "D": {
+              "A": 20905,
+              "D": 30286,
+              "H": 21992,
+              "X": 1
+            },
+            "H": {
+              "A": 5899,
+              "D": 1500,
+              "H": 28984,
+              "X": 38
+            }
+          },
+          "correct": 85473,
+          "eligible": 141561,
+          "live_accuracy": 0.8070988782777835,
+          "live_correct": 55187,
+          "live_frames": 68377,
+          "macro_f1": 0.6059149657513019,
+          "prediction_coverage": 0.9997245003920572,
+          "unknown": 0
+        },
+        "transitions": 350
+      },
+      "candidate": {
+        "intervals": 442,
+        "labels": {
+          "A": 40827,
+          "D": 61273,
+          "H": 39422,
+          "X": 39
+        },
+        "max_interval_frames": 3514,
+        "mean_interval_seconds": 12.810950226244344,
+        "min_interval_frames": 1,
+        "score": {
+          "abstentions": 39,
+          "accuracy": 0.7708620312091607,
+          "class_f1": {
+            "A": 0.6977728315678111,
+            "D": 0.8292465249113099,
+            "H": 0.7378927521326951
+          },
+          "confusion": {
+            "A": {
+              "A": 25393,
+              "D": 2600,
+              "H": 3963,
+              "X": 0
+            },
+            "D": {
+              "A": 9957,
+              "D": 55749,
+              "H": 7477,
+              "X": 1
+            },
+            "H": {
+              "A": 5477,
+              "D": 2924,
+              "H": 27982,
+              "X": 38
+            }
+          },
+          "correct": 109124,
+          "eligible": 141561,
+          "live_accuracy": 0.7805987393421765,
+          "live_correct": 53375,
+          "live_frames": 68377,
+          "macro_f1": 0.7549707028706054,
+          "prediction_coverage": 0.9997245003920572,
+          "unknown": 0
+        },
+        "transitions": 440
+      },
+      "date": "2023-05-27",
+      "home": "VfL Bochum 1848",
+      "id": "J03WN1"
+    },
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 137214,
+        "metadata_sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 69424,
+            "half": 1,
+            "last_raw": 79423
+          },
+          {
+            "first_raw": 100000,
+            "frames": 67790,
+            "half": 2,
+            "last_raw": 167789
+          }
+        ],
+        "reference_counts": {
+          "A": 32819,
+          "D": 65269,
+          "H": 39126
+        },
+        "tracking_sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+      },
+      "away": "SSV Jahn Regensburg",
+      "baseline": {
+        "intervals": 311,
+        "labels": {
+          "A": 52650,
+          "D": 27408,
+          "H": 57046,
+          "X": 110
+        },
+        "max_interval_frames": 5679,
+        "mean_interval_seconds": 17.648102893890677,
+        "min_interval_frames": 15,
+        "score": {
+          "abstentions": 110,
+          "accuracy": 0.6273485212879152,
+          "class_f1": {
+            "A": 0.6419871532368461,
+            "D": 0.544406918652956,
+            "H": 0.69498398702325
+          },
+          "confusion": {
+            "A": {
+              "A": 27435,
+              "D": 1251,
+              "H": 4105,
+              "X": 28
+            },
+            "D": {
+              "A": 20472,
+              "D": 25227,
+              "H": 19522,
+              "X": 48
+            },
+            "H": {
+              "A": 4743,
+              "D": 930,
+              "H": 33419,
+              "X": 34
+            }
+          },
+          "correct": 86081,
+          "eligible": 137214,
+          "live_accuracy": 0.8458405726596706,
+          "live_correct": 60854,
+          "live_frames": 71945,
+          "macro_f1": 0.627126019637684,
+          "prediction_coverage": 0.9991983325316659,
+          "unknown": 0
+        },
+        "transitions": 309
+      },
+      "candidate": {
+        "intervals": 390,
+        "labels": {
+          "A": 40535,
+          "D": 55394,
+          "H": 41175,
+          "X": 110
+        },
+        "max_interval_frames": 5679,
+        "mean_interval_seconds": 14.07323076923077,
+        "min_interval_frames": 15,
+        "score": {
+          "abstentions": 110,
+          "accuracy": 0.8041016222834405,
+          "class_f1": {
+            "A": 0.7308667557324754,
+            "D": 0.8437549207296354,
+            "H": 0.8125179013959976
+          },
+          "confusion": {
+            "A": {
+              "A": 26806,
+              "D": 2452,
+              "H": 3533,
+              "X": 28
+            },
+            "D": {
+              "A": 9297,
+              "D": 50905,
+              "H": 5019,
+              "X": 48
+            },
+            "H": {
+              "A": 4432,
+              "D": 2037,
+              "H": 32623,
+              "X": 34
+            }
+          },
+          "correct": 110334,
+          "eligible": 137214,
+          "live_accuracy": 0.826033775800959,
+          "live_correct": 59429,
+          "live_frames": 71945,
+          "macro_f1": 0.7957131926193695,
+          "prediction_coverage": 0.9991983325316659,
+          "unknown": 0
+        },
+        "transitions": 388
+      },
+      "date": "2022-08-26",
+      "home": "Fortuna D\u00fcsseldorf",
+      "id": "J03WOH"
+    },
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 142536,
+        "metadata_sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 69111,
+            "half": 1,
+            "last_raw": 79110
+          },
+          {
+            "first_raw": 100000,
+            "frames": 73425,
+            "half": 2,
+            "last_raw": 173424
+          }
+        ],
+        "reference_counts": {
+          "A": 38474,
+          "D": 66250,
+          "H": 37812
+        },
+        "tracking_sha256": "a228ef0e676d009cefff1580fcb721b53f598454eb120ec347e0a628a3a4646b"
+      },
+      "away": "F.C. Hansa Rostock",
+      "baseline": {
+        "intervals": 325,
+        "labels": {
+          "A": 55847,
+          "D": 23764,
+          "H": 62879,
+          "X": 46
+        },
+        "max_interval_frames": 4550,
+        "mean_interval_seconds": 17.542892307692306,
+        "min_interval_frames": 15,
+        "score": {
+          "abstentions": 46,
+          "accuracy": 0.5915067070775103,
+          "class_f1": {
+            "A": 0.6718122157313854,
+            "D": 0.4707712133668096,
+            "H": 0.6244848099631546
+          },
+          "confusion": {
+            "A": {
+              "A": 31683,
+              "D": 1582,
+              "H": 5186,
+              "X": 23
+            },
+            "D": {
+              "A": 18808,
+              "D": 21188,
+              "H": 26253,
+              "X": 1
+            },
+            "H": {
+              "A": 5356,
+              "D": 994,
+              "H": 31440,
+              "X": 22
+            }
+          },
+          "correct": 84311,
+          "eligible": 142536,
+          "live_accuracy": 0.8274519571087748,
+          "live_correct": 63123,
+          "live_frames": 76286,
+          "macro_f1": 0.5890227463537832,
+          "prediction_coverage": 0.9996772745131055,
+          "unknown": 0
+        },
+        "transitions": 323
+      },
+      "candidate": {
+        "intervals": 423,
+        "labels": {
+          "A": 42229,
+          "D": 57695,
+          "H": 42566,
+          "X": 46
+        },
+        "max_interval_frames": 2367,
+        "mean_interval_seconds": 13.478581560283688,
+        "min_interval_frames": 15,
+        "score": {
+          "abstentions": 46,
+          "accuracy": 0.7989560532076108,
+          "class_f1": {
+            "A": 0.7716441767964016,
+            "D": 0.8473274436241881,
+            "H": 0.7522456393540521
+          },
+          "confusion": {
+            "A": {
+              "A": 31137,
+              "D": 2684,
+              "H": 4630,
+              "X": 23
+            },
+            "D": {
+              "A": 6034,
+              "D": 52511,
+              "H": 7704,
+              "X": 1
+            },
+            "H": {
+              "A": 5058,
+              "D": 2500,
+              "H": 30232,
+              "X": 22
+            }
+          },
+          "correct": 113880,
+          "eligible": 142536,
+          "live_accuracy": 0.8044595338594237,
+          "live_correct": 61369,
+          "live_frames": 76286,
+          "macro_f1": 0.7904057532582139,
+          "prediction_coverage": 0.9996772745131055,
+          "unknown": 0
+        },
+        "transitions": 421
+      },
+      "date": "2022-09-10",
+      "home": "Fortuna D\u00fcsseldorf",
+      "id": "J03WOY"
+    },
+    {
+      "audit": {
+        "ball_missing_frames": 0,
+        "fps": 25,
+        "frames": 146211,
+        "metadata_sha256": "566dd5e4c86e124ab90fcdba51100881f0436e22afa71832945a451a2d95a420",
+        "no_players_frames": 0,
+        "raw_ranges": [
+          {
+            "first_raw": 10000,
+            "frames": 69131,
+            "half": 1,
+            "last_raw": 79130
+          },
+          {
+            "first_raw": 100000,
+            "frames": 77080,
+            "half": 2,
+            "last_raw": 177079
+          }
+        ],
+        "reference_counts": {
+          "A": 30268,
+          "D": 64751,
+          "H": 51192
+        },
+        "tracking_sha256": "845202c29ad93d696653436da426a7cdaefb848298e07b7343de6529581671e1"
+      },
+      "away": "1. FC N\u00fcrnberg",
+      "baseline": {
+        "intervals": 301,
+        "labels": {
+          "A": 43580,
+          "D": 28853,
+          "H": 73724,
+          "X": 54
+        },
+        "max_interval_frames": 3746,
+        "mean_interval_seconds": 19.430033222591362,
+        "min_interval_frames": 16,
+        "score": {
+          "abstentions": 54,
+          "accuracy": 0.6457380087681501,
+          "class_f1": {
+            "A": 0.6275322283609577,
+            "D": 0.5502542626383488,
+            "H": 0.7283294373819207
+          },
+          "confusion": {
+            "A": {
+              "A": 23171,
+              "D": 1580,
+              "H": 5517,
+              "X": 0
+            },
+            "D": {
+              "A": 16281,
+              "D": 25753,
+              "H": 22717,
+              "X": 0
+            },
+            "H": {
+              "A": 4128,
+              "D": 1520,
+              "H": 45490,
+              "X": 54
+            }
+          },
+          "correct": 94414,
+          "eligible": 146211,
+          "live_accuracy": 0.8428799410753745,
+          "live_correct": 68661,
+          "live_frames": 81460,
+          "macro_f1": 0.6353719761270757,
+          "prediction_coverage": 0.9996306707429674,
+          "unknown": 0
+        },
+        "transitions": 299
+      },
+      "candidate": {
+        "intervals": 389,
+        "labels": {
+          "A": 29820,
+          "D": 58987,
+          "H": 57350,
+          "X": 54
+        },
+        "max_interval_frames": 2636,
+        "mean_interval_seconds": 15.034550128534704,
+        "min_interval_frames": 16,
+        "score": {
+          "abstentions": 54,
+          "accuracy": 0.8299922714433251,
+          "class_f1": {
+            "A": 0.7403474903474904,
+            "D": 0.8704520842425124,
+            "H": 0.8339076118000406
+          },
+          "confusion": {
+            "A": {
+              "A": 22243,
+              "D": 3056,
+              "H": 4969,
+              "X": 0
+            },
+            "D": {
+              "A": 3773,
+              "D": 53854,
+              "H": 7124,
+              "X": 0
+            },
+            "H": {
+              "A": 3804,
+              "D": 2077,
+              "H": 45257,
+              "X": 54
+            }
+          },
+          "correct": 121354,
+          "eligible": 146211,
+          "live_accuracy": 0.8286275472624601,
+          "live_correct": 67500,
+          "live_frames": 81460,
+          "macro_f1": 0.8149023954633478,
+          "prediction_coverage": 0.9996306707429674,
+          "unknown": 0
+        },
+        "transitions": 387
+      },
+      "date": "2022-10-15",
+      "home": "Fortuna D\u00fcsseldorf",
+      "id": "J03WPY"
+    }
+  ],
+  "split": "development only; existing holdouts not reused"
+}

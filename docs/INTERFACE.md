@@ -57,6 +57,15 @@ contested candidate frame.
 Unconfirmed opposing evidence is never backfilled. This optional behavior uses
 future evidence, and its reason code stays in diagnostics rather than labels.
 
+The optional v6 rule (`model/config_v6_stoppage.json`) adds
+`stationary_unattended` to evidence after 50 consecutive observed 25 Hz frames
+where the ball stays within 0.5 m and each team's nearest observed player remains
+at least 3 m away. A player from both teams must be observed. Confirmation
+backfills only within one half; missing observations and motion break the run.
+Inference treats this cue as D only when the configuration enables it. Restart
+still requires confirmed control. The cue is derived from positions, never an
+external possession/live-dead reference field.
+
 ## Integration and verification
 
 The lead wires these modules into `model/temporal.py` / `model/run.py` and owns

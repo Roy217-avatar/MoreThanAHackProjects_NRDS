@@ -41,12 +41,15 @@ def infer(evidence, blocks, config):
 
             outside_run = outside_run + 1 if row["outside"] else 0
             if (outside_run >= config["out_of_bounds_frames"]
-                    or row["stationary_set_piece"]):
+                    or row["stationary_set_piece"]
+                    or (config.get("stationary_unattended_frames") is not None
+                        and row.get("stationary_unattended", False))):
                 state = "D"
                 pending, pending_first, votes, gap = None, None, 0, 0
                 labels[frame] = "D"
                 reasons[frame] = ("sustained_out_of_bounds" if outside_run >= config["out_of_bounds_frames"]
-                                  else "stationary_set_piece")
+                                  else "stationary_set_piece" if row["stationary_set_piece"]
+                                  else "stationary_unattended")
                 continue
 
             # An observed out-of-bounds frame cannot support player control.

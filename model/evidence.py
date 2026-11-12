@@ -72,7 +72,8 @@ def evidence_from_line(line, expected_frame, team_slots, config, pitch):
                 and closest[loser] - closest[winner] >= config["opponent_margin_m"]):
             candidate = winner
     return {"candidate": candidate, "outside": outside, "ball_seen": ball is not None,
-            "ball_xy": ball, "players_seen": seen, "stationary_set_piece": False}
+            "ball_xy": ball, "players_seen": seen, "stationary_set_piece": False,
+            "nearest_distance_m": closest}
 
 
 def add_set_piece_evidence(evidence, events, blocks, config, pitch):
@@ -122,4 +123,7 @@ def load_tactical_evidence(config, data_dir=None):
         raise ValueError("ATD has {} frames; expected {}".format(len(evidence), count))
     events = load_smart_tagging(GAME, data_dir)
     add_set_piece_evidence(evidence, events, half_video_blocks(GAME), config, pitch)
+    if config.get('stationary_unattended_frames') is not None:
+        from model.stoppage import add_stoppage_evidence
+        add_stoppage_evidence(evidence, half_video_blocks(GAME), config, pitch)
     return evidence, team_names

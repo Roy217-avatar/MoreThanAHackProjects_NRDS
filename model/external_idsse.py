@@ -126,6 +126,9 @@ def load_match(metadata_path, tracking_path, config):
             if ball is not None:
                 item['nearest_distance_m'][side] = min(item['nearest_distance_m'][side], math.dist(point, ball))
     assign_candidates(evidence, config['control_distance_m'], config['opponent_margin_m'])
+    if config.get('stationary_unattended_frames') is not None:
+        from model.stoppage import add_stoppage_evidence
+        add_stoppage_evidence(evidence, blocks, config, (length, width))
     audit = {'frames': len(evidence), 'fps': 25, 'raw_ranges': raw_ranges,
              'ball_missing_frames': sum(not r['ball_seen'] for r in evidence),
              'no_players_frames': sum(r['players_seen'] == 0 for r in evidence),
