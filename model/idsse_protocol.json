@@ -1,0 +1,13 @@
+{
+  "source_revision": "a715a38dfbaf5f58e431727c2b78d174101a703c",
+  "development": ["J03WMX", "J03WN1", "J03WOH", "J03WOY", "J03WPY"],
+  "holdout": ["J03WQQ", "J03WR9"],
+  "grid": {
+    "control_distance_m": [1.5, 2.0, 2.5, 3.0],
+    "opponent_margin_m": [0.25, 0.75],
+    "control_frames": [4, 8, 12, 20],
+    "out_of_bounds_frames": [10, 25, 50, 120]
+  },
+  "selection": "pooled H/A/D accuracy; ties: macro F1, then grid order",
+  "fixed": "v4 control backfill, zero evidence gaps, unchanged set-piece logic; no reference labels in evidence"
+}

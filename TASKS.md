@@ -5,6 +5,20 @@ Statuses describe completed work in this checkout; no private-match score or org
 The project Git root is now `/Users/nathanaelsagala/MoreThanAHackProjects_NRDS`;
 the former nested folder was moved here on 2026-11-11 (TASK-011).
 
+### TASK-012 — Research new possession data and retry external tuning
+- Status: done
+- Priority: P1
+- Owner: Codex
+- Depends on: TASK-010
+- Goal: Audit ten additional public resources and run a reproducible new-data tuning experiment, targeting >95% without claiming an unmeasured result.
+- Scope: external dataset adapter, synthetic tests, frozen match split/grid, candidate configuration, aggregate results and a Markdown methods/calculation report.
+- Acceptance criteria: ten cited resources with availability and compatibility; actual tuning on eligible new inputs; whole-match holdout untouched until selection; report all eligible reference frames including errors/abstentions, baseline and candidate, per-match results, limitations and reproduction evidence.
+- Verification: full unit suite, deterministic report regeneration, official validation and repeat hash if a new tactical CSV is generated; diff review.
+- Evidence: ten resources assessed; seven IDSSE matches (1,002,644 frames) used with fixed five/two match split and 128-setting grid. Candidate holdout accuracy 185,314/289,155 = 64.09% versus v4 63.75%; live-team agreement 88.08%. The >95% target was not achieved. All 64 tests passed; candidate tactical CSV passed official validation with repeat SHA-256 c896d3548af7f608491626a5c3815f91ad8b219c3c543bbb33aafef12763a999. Full search counts/config repeated; holdout report repeated byte for byte. Final-code fingerprints verified. Results, sources, commands and limitations: `docs/verification/TASK-012.md`, `docs/POSSESSION_DATA_RESEARCH.md`.
+- Blocker: none for this experiment. General accuracy and challenge ranking improvement remain unverified; live/dead detection and independent validation limit further claims.
+- Last updated: 2026-11-11
+- Handoff: retain v5 as experimental (more fragmentation, one test match worsened). Develop live/dead evidence with a fresh reserved external source; do not retune against now-inspected IDSSE or prior SkillCorner holdouts. No commit/push made.
+
 ## Coordinated work (2026-11-09)
 
 The lead established `docs/INTERFACE.md` before delegating. On 2026-11-09, the data agent owned
@@ -21,8 +35,8 @@ The experimental external-tuned v4 output is `evaluation/results/temporal_v4.csv
 The v1 output remains byte-identical to its 2026-11-09 artifact. V2 changes only
 confirmed stationary set-piece timing and has no established accuracy gain.
 The tactical ATD and tagging inputs are present only under ignored `data/tactical/` in this
-workspace; a fresh clone needs the authorized bundle. Ten public SkillCorner matches are now
-available under ignored `data/external/skillcorner/` for provider-agreement diagnostics, but
+workspace; a fresh clone needs the authorized bundle. Nineteen public SkillCorner matches and
+seven IDSSE matches are available under ignored `data/external/` for provider-reference checks, but
 independent human-labeled external data, a registered team name, and a final technical document
 are not available. No performance improvement over the official baseline has been established.
 

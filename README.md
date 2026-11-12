@@ -108,3 +108,23 @@ transfer differently from 10 fps broadcast tracking to 25 fps tactical tracking,
 is an experimental option rather than a proven final selection. Commands, source split,
 input hashes, BAR-ATH v4 output validation and limitations are in
 [`docs/verification/TASK-010.md`](docs/verification/TASK-010.md).
+
+## Additional sources and external tuning (TASK-012)
+
+The [ten-source catalog](docs/POSSESSION_DATA_RESEARCH.md) distinguishes usable tracking
+and possession references from sparse events, gated data and tracking-only resources.
+Seven new IDSSE/Sportec matches were used in a fixed five-development/two-test split.
+`model/external_idsse.py` maps their 25 Hz XML into evidence while keeping provider
+possession/live-dead fields exclusively in scoring references. `model/tune_idsse.py`
+searched 128 settings and saved the candidate in `model/config_v5_external.json`.
+
+On the two reserved matches, full H/A/D reference accuracy was **64.09%**, versus
+**63.75% for v4**; live-team agreement was **88.08%**, versus **87.69%**. The >95%
+target was not achieved. Dead-ball recall was 30.01%, and candidate intervals were
+more fragmented. V5 is an experimental artifact, with no demonstrated challenge
+ranking gain. The earlier configurations and inference implementation are preserved.
+
+The [methods and accuracy report](docs/verification/TASK-012.md) contains match dates
+and teams, exact counts/formulas, download and execution commands, hashes and limitations.
+The candidate tactical CSV is ignored at `evaluation/results/temporal_v5_external.csv`;
+it passed the official format validator and repeat generation matched byte for byte.
