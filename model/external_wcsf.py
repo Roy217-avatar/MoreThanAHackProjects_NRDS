@@ -14,6 +14,7 @@ from model.external_idsse import digest
 from model.external_skillcorner import scale_config
 from model.stoppage import add_stoppage_evidence
 from model.tune_skillcorner import assign_candidates
+from model.motion import add_ball_motion_evidence
 
 
 FPS = 10
@@ -109,6 +110,7 @@ def _load_half(path, config):
                     raise ValueError('unordered timestamp')
                 if timestamp != current and rows:
                     item, target, conflicted = _finalize(rows, config)
+                    item['timestamp_s'] = current / 1000.0
                     evidence.append(item); reference.append(target); timestamps.append(current)
                     reference_conflicts += conflicted
                     if timestamp - current != 100:
@@ -127,6 +129,7 @@ def _load_half(path, config):
                 })
             if rows:
                 item, target, conflicted = _finalize(rows, config)
+                item['timestamp_s'] = current / 1000.0
                 evidence.append(item); reference.append(target); timestamps.append(current)
                 reference_conflicts += conflicted
     if not evidence:
@@ -149,7 +152,9 @@ def load_match(paths, config):
         blocks.append((half, first, len(evidence) - 1))
         ranges.append([timestamps[0], timestamps[-1]])
         reference_conflicts += half_conflicts
-    if scaled.get('stationary_unattended_frames') is not None:
+    add_ball_motion_evidence(evidence, blocks, PITCH_M)
+    if (scaled.get('stationary_unattended_frames') is not None
+            or scaled.get('stationary_observed_frames') is not None):
         add_stoppage_evidence(evidence, blocks, scaled, PITCH_M)
     audit = {
         'fps': FPS,

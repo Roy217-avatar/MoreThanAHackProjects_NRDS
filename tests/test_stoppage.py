@@ -61,6 +61,36 @@ class StoppageTests(unittest.TestCase):
         labels, _ = infer(evidence, [(1, 0, 4)], old)
         self.assertEqual(labels, ['H'] * 5)
 
+    def test_observed_stationary_cue_handles_nearby_players_without_using_labels(self):
+        config = dict(CONFIG, stationary_observed_frames=3,
+                      stationary_observed_radius_m=.5,
+                      tracking_freeze_epsilon_m=.001)
+        evidence = [row(nearest=value) for value in (1.0, 1.2, 1.4)]
+        add_stoppage_evidence(evidence, [(1, 0, 2)], config, (100, 60))
+        self.assertEqual([item['stationary_observed'] for item in evidence],
+                         [True, True, True])
+        labels, reasons = infer(evidence, [(1, 0, 2)], config)
+        self.assertEqual(labels, ['D', 'D', 'D'])
+        self.assertEqual(reasons[0], 'stationary_observed')
+
+    def test_observed_stationary_cue_does_not_require_unattended_cue(self):
+        config = {key: value for key, value in CONFIG.items()
+                  if not key.startswith('stationary_unattended_')}
+        config.update(stationary_observed_frames=3,
+                      stationary_observed_radius_m=.5,
+                      tracking_freeze_epsilon_m=.001)
+        evidence = [row(nearest=value) for value in (1.0, 1.2, 1.4)]
+        add_stoppage_evidence(evidence, [(1, 0, 2)], config, (100, 60))
+        self.assertTrue(all(item['stationary_observed'] for item in evidence))
+
+    def test_coordinated_tracking_freeze_does_not_prove_dead_ball(self):
+        config = dict(CONFIG, stationary_observed_frames=3,
+                      stationary_observed_radius_m=.5,
+                      tracking_freeze_epsilon_m=.001)
+        evidence = [row(nearest=1.0) for _ in range(3)]
+        add_stoppage_evidence(evidence, [(1, 0, 2)], config, (100, 60))
+        self.assertFalse(any(item['stationary_observed'] for item in evidence))
+
 
 if __name__ == '__main__':
     unittest.main()

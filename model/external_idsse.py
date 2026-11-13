@@ -11,6 +11,7 @@ import math
 import xml.etree.ElementTree as ET
 
 from model.tune_skillcorner import assign_candidates
+from model.motion import add_ball_motion_evidence
 
 SECTIONS = {'firstHalf': 1, 'secondHalf': 2}
 SOURCE_REVISION = 'a715a38dfbaf5f58e431727c2b78d174101a703c'
@@ -107,7 +108,8 @@ def load_match(metadata_path, tracking_path, config):
             evidence.append({'candidate': None, 'outside': outside, 'ball_seen': ball is not None,
                              'ball_xy': (ball[0]/length+0.5, ball[1]/width+0.5) if ball else None,
                              'players_seen': 0, 'stationary_set_piece': False,
-                             'nearest_distance_m': {'H': math.inf, 'A': math.inf}})
+                             'nearest_distance_m': {'H': math.inf, 'A': math.inf},
+                             'timestamp_s': (frame - lo) / 25.0})
             references.append(target)
     # Second pass consumes only positions and metadata. Reference labels are separate.
     for group in _groups(tracking_path):
@@ -126,7 +128,9 @@ def load_match(metadata_path, tracking_path, config):
             if ball is not None:
                 item['nearest_distance_m'][side] = min(item['nearest_distance_m'][side], math.dist(point, ball))
     assign_candidates(evidence, config['control_distance_m'], config['opponent_margin_m'])
-    if config.get('stationary_unattended_frames') is not None:
+    add_ball_motion_evidence(evidence, blocks, (length, width))
+    if (config.get('stationary_unattended_frames') is not None
+            or config.get('stationary_observed_frames') is not None):
         from model.stoppage import add_stoppage_evidence
         add_stoppage_evidence(evidence, blocks, config, (length, width))
     audit = {'frames': len(evidence), 'fps': 25, 'raw_ranges': raw_ranges,

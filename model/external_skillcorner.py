@@ -20,7 +20,8 @@ def scale_config(config, target_fps):
         raise ValueError("target_fps must be positive")
     scaled = dict(config)
     for name in ("control_frames", "evidence_gap_frames", "out_of_bounds_frames",
-                 "set_piece_stationary_frames", "stationary_unattended_frames"):
+                 "set_piece_stationary_frames", "stationary_unattended_frames",
+                 "stationary_observed_frames"):
         if name in scaled:
             scaled[name] = max(0 if name == "evidence_gap_frames" else 1,
                                round(config[name] * target_fps / 25))

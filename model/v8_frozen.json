@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-12",
+  "candidate": "observed75",
+  "operating_mode": "offline",
+  "code_base_revision": "2dadaf6a531ac287e26317cb6272fa44e64be7e6",
+  "config": "model/config_v8.json",
+  "config_sha256": "61ab5e79210abfd7ba07c24d785890bdeb7f507f43d0c2e0f41d96f7926f6238",
+  "dataset_manifest": "model/dataset_manifest_v8.json",
+  "dataset_manifest_sha256": "014b52f12ddaf59eb7a8d1ab4907b3c38e2b6e9d13967c55e7b2dd1c000cc2da",
+  "selection_protocol": "model/v8_protocol.json",
+  "selection_protocol_sha256": "6a11b72ba9b893708378ad046f8027f95084e5a91b49a7e2805deeaf7eebfbf2",
+  "development_report": "docs/verification/TASK-015-development.json",
+  "development_report_sha256": "23c2916ec9a895e7a47c2ffbaf4404ab98da9c3877c1bf71878d6685c666b334",
+  "requirements_lock_sha256": "a3c002eb810057e3b0e64c89b5e0dc7cfe570d53f40aec4df19df78ab500a9ff",
+  "seed": null,
+  "deterministic": true,
+  "development_result": {
+    "grouped_oof_had_agreement": 0.8877477948304683,
+    "grouped_oof_spell_f1_mean": 0.4840779374138949,
+    "selected_all_development_had_agreement": 0.8855057228687351,
+    "selected_all_development_spell_f1_mean": 0.4785232235013893
+  },
+  "final_test": {
+    "status": "not_run",
+    "reason": "No genuinely untouched compatible match is available."
+  },
+  "inference_command": ".venv/bin/python model/run.py --config model/config_v8.json --output evaluation/results/temporal_v8.csv --diagnostics evaluation/reports/temporal_v8_diagnostics.csv",
+  "evaluation_command": ".venv/bin/python -m model.cross_validate_v8 --data-root data/external/idsse --output docs/verification/TASK-015-development.json --config-out model/config_v8.json"
+}

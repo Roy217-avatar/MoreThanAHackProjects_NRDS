@@ -1,5 +1,19 @@
 # Task board — 2026-11-12
 
+### TASK-015 — Improve dead-ball generalization with grouped development evaluation
+- Status: done
+- Priority: P1
+- Owner: Codex
+- Depends on: TASK-014
+- Goal: Improve dead-ball evidence and possession-spell quality without tuning on WCSF or the challenge public labels, then freeze a reproducible candidate using match-grouped development evidence.
+- Scope: explicit dataset manifest; seven-match IDSSE grouped cross-validation; failure diagnostics; bounded dead-evidence/temporal ablations; synthetic regression tests; frozen configuration, tactical output and verification record. Preserve v7 and official evaluation code.
+- Acceptance criteria: every collected match has an explicit role; no frame-level leakage; WCSF/public references are not opened by the experiment; baseline and candidates use the unchanged official spell metric; controlling-team regression tolerance is predeclared; targeted missingness/freeze/stoppage/restart tests pass; selected output validates and repeats byte for byte; lack of an untouched final test is reported rather than concealed.
+- Verification: manifest/protocol validation; grouped-fold tests; full unit suite; reproducible development report; official CSV validator; repeated tactical generation and hashes; diff/leakage review.
+- Evidence: `model/dataset_manifest_v8.json` and `model/v8_protocol.json` were frozen before the bounded 12-candidate experiment. V7 reproduced on 1,002,644 IDSSE development frames at 84.11% H/A/D agreement, 0.4432 official spellF1 and 85.94% D recall. Whole-match out-of-fold selection produced 88.77% agreement and 0.4841 spellF1. Frozen `observed75` v8 produced 88.55% development agreement, 0.4785 spellF1, 96.82% D recall and 88.54% conditional live-team agreement; these are provider-reference development results, not independent accuracy. All 93 tests passed. The exact 199,319-row tactical CSV passed the official validator; two predictions matched SHA-256 `97bf92b0c189c01d0b27b5bce897e3f5713ea5904cdb6b3edd524d0b29a0ff19`, diagnostics also matched, and a v7 regression retained its earlier hash. Full evidence: `docs/verification/TASK-015.md`; aggregates: `docs/verification/TASK-015-development.json`; frozen record: `model/v8_frozen.json`.
+- Blocker: none for implementation and development evaluation. No untouched compatible final-test match is available, so 85% independent accuracy remains unverified.
+- Last updated: 2026-11-12
+- Handoff: obtain several compatible, legally usable labelled matches whose labels have never been inspected; freeze the final-test protocol before opening them. Restart release delay is the highest-value model issue, but do not tune it against WCSF, BAR–ATH public labels, or the now-inspected IDSSE matches.
+
 ### TASK-014 — Freeze, refine and independently assess the temporal model
 - Status: done
 - Priority: P1

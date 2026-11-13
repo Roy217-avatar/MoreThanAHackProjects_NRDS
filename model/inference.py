@@ -43,17 +43,24 @@ def infer(evidence, blocks, config):
             if (outside_run >= config["out_of_bounds_frames"]
                     or row["stationary_set_piece"]
                     or (config.get("stationary_unattended_frames") is not None
-                        and row.get("stationary_unattended", False))):
+                        and row.get("stationary_unattended", False))
+                    or (config.get("stationary_observed_frames") is not None
+                        and row.get("stationary_observed", False))):
                 state = "D"
                 pending, pending_first, votes, gap = None, None, 0, 0
                 labels[frame] = "D"
                 reasons[frame] = ("sustained_out_of_bounds" if outside_run >= config["out_of_bounds_frames"]
                                   else "stationary_set_piece" if row["stationary_set_piece"]
-                                  else "stationary_unattended")
+                                  else "stationary_unattended" if row.get("stationary_unattended", False)
+                                  else "stationary_observed")
                 continue
 
             # An observed out-of-bounds frame cannot support player control.
             if row["outside"]:
+                candidate = None
+            if (state == 'D' and config.get('restart_min_ball_speed_mps') is not None
+                    and (row.get('ball_speed_mps') is None
+                         or row['ball_speed_mps'] < config['restart_min_ball_speed_mps'])):
                 candidate = None
             if candidate is not None and candidate != state:
                 if candidate != pending:
@@ -61,7 +68,9 @@ def infer(evidence, blocks, config):
                     pending_first = frame
                 votes += 1
                 gap = 0
-                if votes >= config["control_frames"]:
+                needed = (config.get('restart_control_frames', config['control_frames'])
+                          if state == 'D' else config['control_frames'])
+                if votes >= needed:
                     state = candidate
                     if config.get("control_backfill", False):
                         for confirmed_frame in range(pending_first, frame):

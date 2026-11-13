@@ -38,6 +38,19 @@ def load_config(path):
                 or config['stationary_unattended_radius_m'] < 0
                 or config['stationary_unattended_min_player_m'] < 0):
             raise ValueError('invalid stationary unattended settings')
+    if config.get('stationary_observed_frames') is not None:
+        if (not isinstance(config['stationary_observed_frames'], int)
+                or config['stationary_observed_frames'] < 2
+                or config['stationary_observed_radius_m'] < 0
+                or config['tracking_freeze_epsilon_m'] < 0):
+            raise ValueError('invalid observed stationary settings')
+    if config.get('restart_control_frames') is not None:
+        if (not isinstance(config['restart_control_frames'], int)
+                or config['restart_control_frames'] < 1):
+            raise ValueError('invalid restart control frames')
+    if (config.get('restart_min_ball_speed_mps') is not None
+            and config['restart_min_ball_speed_mps'] < 0):
+        raise ValueError('invalid restart motion threshold')
     return config
 
 

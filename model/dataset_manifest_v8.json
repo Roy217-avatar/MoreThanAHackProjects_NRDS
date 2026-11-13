@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-12",
+  "policy": "Match-level groups only. WCSF and challenge public labels are historical benchmarks excluded from all v8 development and selection. No untouched final-test matches are currently available.",
+  "sources": {
+    "idsse": {
+      "source_revision": "a715a38dfbaf5f58e431727c2b78d174101a703c",
+      "fps": 25,
+      "reference": "Provider BallStatus and BallPossession fields",
+      "role": "development_cross_validation",
+      "matches": [
+        {"id": "J03WMX", "date": "2023-05-27", "home": "1. FC Köln", "away": "FC Bayern München", "prior_exposure": "v5/v7 development"},
+        {"id": "J03WN1", "date": "2023-05-27", "home": "VfL Bochum 1848", "away": "Bayer 04 Leverkusen", "prior_exposure": "v5/v7 development"},
+        {"id": "J03WOH", "date": "2022-08-26", "home": "Fortuna Düsseldorf", "away": "SSV Jahn Regensburg", "prior_exposure": "v5/v7 development"},
+        {"id": "J03WOY", "date": "2022-09-10", "home": "Fortuna Düsseldorf", "away": "F.C. Hansa Rostock", "prior_exposure": "v5/v7 development"},
+        {"id": "J03WPY", "date": "2022-10-15", "home": "Fortuna Düsseldorf", "away": "1. FC Nürnberg", "prior_exposure": "v5/v7 development"},
+        {"id": "J03WQQ", "date": "2022-11-05", "home": "Fortuna Düsseldorf", "away": "FC St. Pauli", "prior_exposure": "v5 holdout, later descriptive analysis"},
+        {"id": "J03WR9", "date": "2022-11-11", "home": "Fortuna Düsseldorf", "away": "1. FC Kaiserslautern", "prior_exposure": "v5 holdout, later descriptive analysis"}
+      ]
+    },
+    "skillcorner": {
+      "source_revision": "4340d274572876239c154c90bc507a9b3250a656",
+      "fps": 10,
+      "reference": "Provider possession and in-play phase fields; gaps are unknown, not D",
+      "role": "previously_inspected_benchmark_excluded_from_v8_selection",
+      "matches": [1874553, 1886347, 1899585, 1925299, 1927964, 1959846, 1986691, 1996435, 1996436, 2006229, 2006363, 2007448, 2007721, 2010085, 2011166, 2013725, 2015213, 2016236, 2017461]
+    },
+    "wcsf": {
+      "source_revision": "1c9ba798f98a9fffb16081a5d3965774d4e5662c",
+      "fps": 10,
+      "reference": "Provider AliveFlag and PossessionFlag",
+      "role": "historical_benchmark_excluded_from_v8_selection",
+      "matches": ["wcsf-anonymous-professional-match"],
+      "reason": "Results were inspected during TASK-014 and used to choose v7 among predeclared candidates."
+    },
+    "challenge_public": {
+      "fps": 25,
+      "reference": "Official five-minute public labels",
+      "role": "pipeline_check_only_excluded_from_v8_selection",
+      "matches": ["BAR-ATH-public-window"],
+      "reason": "Competition rules prohibit training or tuning on these labels."
+    }
+  },
+  "untouched_final_test": [],
+  "grouping": {
+    "outer_folds": "Leave one complete IDSSE match out; no frame or window split.",
+    "inner_selection": "Select a predeclared candidate on the other six complete IDSSE matches by pooled spellF1, then macro-F1, then H/A/D agreement.",
+    "duplicates": "No known duplicate IDSSE recordings; match IDs are the indivisible groups."
+  }
+}

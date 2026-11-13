@@ -80,6 +80,18 @@ class IDSSETests(unittest.TestCase):
         labels, _ = infer(match['evidence'], match['blocks'], self.config)
         self.assertEqual(labels, ['X'] * 6)
 
+    def test_observed_stationary_feature_can_run_without_unattended_feature(self):
+        config = {key: value for key, value in self.config.items()
+                  if not key.startswith('stationary_unattended_')}
+        config.update(stationary_observed_frames=2,
+                      stationary_observed_radius_m=.5,
+                      tracking_freeze_epsilon_m=.001)
+        home = self.root.find("FrameSet[@TeamId='home']")
+        home[1].set('X', '1.2')
+        self.save()
+        match = load_match(self.metadata, self.tracking, config)
+        self.assertTrue(match['evidence'][0]['stationary_observed'])
+
     def test_duplicate_frame_rejected(self):
         self.root.find('FrameSet')[1].set('N', '100')
         self.save()

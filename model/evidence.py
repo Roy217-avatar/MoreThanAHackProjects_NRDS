@@ -8,6 +8,7 @@ import math
 import xml.etree.ElementTree as ET
 
 from games import GAME, GAMES, half_video_blocks, require, source_frames
+from model.motion import add_ball_motion_evidence
 from starter.load_smart_tagging import load as load_smart_tagging
 
 
@@ -73,7 +74,7 @@ def evidence_from_line(line, expected_frame, team_slots, config, pitch):
             candidate = winner
     return {"candidate": candidate, "outside": outside, "ball_seen": ball is not None,
             "ball_xy": ball, "players_seen": seen, "stationary_set_piece": False,
-            "nearest_distance_m": closest}
+            "nearest_distance_m": closest, "timestamp_s": expected_frame / 25.0}
 
 
 def add_set_piece_evidence(evidence, events, blocks, config, pitch):
@@ -122,8 +123,11 @@ def load_tactical_evidence(config, data_dir=None):
     if len(evidence) != count:
         raise ValueError("ATD has {} frames; expected {}".format(len(evidence), count))
     events = load_smart_tagging(GAME, data_dir)
-    add_set_piece_evidence(evidence, events, half_video_blocks(GAME), config, pitch)
-    if config.get('stationary_unattended_frames') is not None:
+    blocks = half_video_blocks(GAME)
+    add_ball_motion_evidence(evidence, blocks, pitch)
+    add_set_piece_evidence(evidence, events, blocks, config, pitch)
+    if (config.get('stationary_unattended_frames') is not None
+            or config.get('stationary_observed_frames') is not None):
         from model.stoppage import add_stoppage_evidence
-        add_stoppage_evidence(evidence, half_video_blocks(GAME), config, pitch)
+        add_stoppage_evidence(evidence, blocks, config, pitch)
     return evidence, team_names

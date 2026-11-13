@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-12",
+  "code_revision_before_task": "2dadaf6a531ac287e26317cb6272fa44e64be7e6",
+  "manifest": "model/dataset_manifest_v8.json",
+  "manifest_sha256": "014b52f12ddaf59eb7a8d1ab4907b3c38e2b6e9d13967c55e7b2dd1c000cc2da",
+  "base_config": "model/config_v7_stoppage.json",
+  "base_config_sha256": "c28b2df9e0dab945663f3d0bd2e0d8319b948e834a3d2fc597f9e03205f0ff67",
+  "operating_mode": "offline; confirmed stationary windows and control runs may be backfilled, never across halves",
+  "selection": {
+    "primary": "pooled spell_f1_mean on training-side whole matches",
+    "tie_breakers": ["macro_f1", "accuracy"],
+    "minimum_accuracy_delta_vs_v7": -0.005,
+    "minimum_both_live_team_accuracy_delta_vs_v7": -0.005,
+    "outer_evaluation": "leave-one-IDSSE-match-out; candidate selection uses only the other six matches",
+    "final_fit": "select once on all seven development matches after grouped evaluation"
+  },
+  "candidates": [
+    {"name": "v7_baseline", "overrides": {}},
+    {"name": "restart3_motion02", "overrides": {"restart_control_frames": 3, "restart_min_ball_speed_mps": 0.2}},
+    {"name": "restart6_motion02", "overrides": {"restart_control_frames": 6, "restart_min_ball_speed_mps": 0.2}},
+    {"name": "restart3_motion05", "overrides": {"restart_control_frames": 3, "restart_min_ball_speed_mps": 0.5}},
+    {"name": "restart6_motion05", "overrides": {"restart_control_frames": 6, "restart_min_ball_speed_mps": 0.5}},
+    {"name": "observed50", "overrides": {"stationary_observed_frames": 50, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}},
+    {"name": "observed75", "overrides": {"stationary_observed_frames": 75, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}},
+    {"name": "observed100", "overrides": {"stationary_observed_frames": 100, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}},
+    {"name": "combined_restart3_observed50", "overrides": {"restart_control_frames": 3, "restart_min_ball_speed_mps": 0.2, "stationary_observed_frames": 50, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}},
+    {"name": "combined_restart6_observed50", "overrides": {"restart_control_frames": 6, "restart_min_ball_speed_mps": 0.2, "stationary_observed_frames": 50, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}},
+    {"name": "combined_restart3_observed75", "overrides": {"restart_control_frames": 3, "restart_min_ball_speed_mps": 0.5, "stationary_observed_frames": 75, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}},
+    {"name": "combined_restart6_observed75", "overrides": {"restart_control_frames": 6, "restart_min_ball_speed_mps": 0.5, "stationary_observed_frames": 75, "stationary_observed_radius_m": 0.5, "tracking_freeze_epsilon_m": 0.001}}
+  ],
+  "excluded_from_all_selection": [
+    "WCSF references and historical metrics",
+    "BAR-ATH public five-minute labels and metrics",
+    "SkillCorner historical benchmark metrics"
+  ],
+  "experiment_budget": "12 fixed candidates x 7 whole IDSSE matches; no adaptive second grid"
+}

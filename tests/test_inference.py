@@ -10,12 +10,13 @@ CONFIG = {"control_frames": 3, "evidence_gap_frames": 1,
 
 
 def evidence(candidate=None, *, outside=False, ball_seen=True,
-             players_seen=2, stationary_set_piece=False):
+             players_seen=2, stationary_set_piece=False, ball_speed_mps=None):
     return {"candidate": candidate, "outside": outside,
             "ball_seen": ball_seen,
             "ball_xy": (0.5, 0.5) if ball_seen else None,
             "players_seen": players_seen,
-            "stationary_set_piece": stationary_set_piece}
+            "stationary_set_piece": stationary_set_piece,
+            "ball_speed_mps": ball_speed_mps}
 
 
 def infer(sequence, blocks):
@@ -129,6 +130,18 @@ class InferenceTests(unittest.TestCase):
         config = dict(CONFIG, control_backfill=True, evidence_gap_frames=1)
         with self.assertRaisesRegex(ValueError, "control_backfill"):
             model_infer([evidence("H") for _ in range(3)], [(1, 0, 2)], config)
+
+    def test_restart_uses_separate_motion_gated_confirmation(self):
+        config = dict(CONFIG, control_backfill=True, evidence_gap_frames=0,
+                      restart_control_frames=2, restart_min_ball_speed_mps=.5)
+        sequence = [evidence('H') for _ in range(3)]
+        sequence += [evidence(stationary_set_piece=True)]
+        sequence += [evidence('A', ball_speed_mps=0.0) for _ in range(2)]
+        sequence += [evidence('A', ball_speed_mps=1.0) for _ in range(2)]
+        labels, reasons = model_infer(sequence, [(1, 0, 7)], config)
+        self.assertEqual(labels, ['H', 'H', 'H', 'D', 'D', 'D', 'A', 'A'])
+        self.assertEqual(reasons[4:6], ['awaiting_restart', 'awaiting_restart'])
+        self.assertEqual(reasons[6], 'control_backfilled')
 
 
 if __name__ == "__main__":

@@ -24,6 +24,12 @@ The lead owns this file and integration. The official `games.py`, `starter/`, an
 | `ball_xy` | normalized `(x, y)` tuple or `None` | Raw tactical pitch position, not metres. |
 | `players_seen` | nonnegative `int` | Number of slots with finite positions in this frame. |
 | `stationary_set_piece` | `bool` | Sustained observed stationary ball within an automatic set-piece interval; a tag alone is insufficient. With v2 offline backfill, the entire confirmed observation window is marked. |
+| `nearest_distance_m` | H/A to finite metres or infinity | Nearest observed player of each team; slots are not identities. |
+| `timestamp_s` | finite seconds | Monotonic within a half; tactical and IDSSE use their own 25 Hz timelines. |
+| `ball_speed_mps` | nonnegative float or `None` | Causal derivative using actual adjacent timestamps; absent after missing observations and at half starts. |
+| `ball_acceleration_mps2` | float or `None` | Causal speed derivative; absent until two consecutive speed estimates exist. |
+| `stationary_unattended` | `bool` | Optional confirmed stationary-ball cue requiring both teams' finite player distances and configured clearance. |
+| `stationary_observed` | `bool` | Optional confirmed stationary-ball cue that allows nearby players but rejects exact coordinated distance freezes. |
 
 Distance calculations scale normalized x/y by `games.GAMES[GAME]["pitch"]` in metres.
 Missing ball or player coordinates yield absent evidence, never dead-ball evidence by
@@ -65,6 +71,16 @@ backfills only within one half; missing observations and motion break the run.
 Inference treats this cue as D only when the configuration enables it. Restart
 still requires confirmed control. The cue is derived from positions, never an
 external possession/live-dead reference field.
+
+The frozen v8 configuration adds `stationary_observed`: the ball and player-distance
+observations must be valid, inside the pitch, and stationary inside the configured radius for
+the configured duration. It is independent of the unattended cue. Exact simultaneous freezes
+in both nearest-team distance series suppress this evidence. Confirmation can backfill only the
+observed window inside one half, so v8 is offline with bounded lookahead. Missing observations
+remain unknown rather than dead. Optional restart settings can use a separate control duration
+and causal minimum ball speed, but those settings are not enabled in frozen v8. Dataset roles,
+selection safeguards and limitations are in `model/dataset_manifest_v8.json`,
+`model/v8_protocol.json`, and `docs/verification/TASK-015.md`.
 
 ## Integration and verification
 

@@ -181,3 +181,32 @@ export MTAH_DATA_DIR=/absolute/path/to/authorized/bundle
 .venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v7_stoppage.csv
 shasum -a 256 evaluation/results/temporal_v7_stoppage.csv
 ```
+
+## Frozen v8 grouped-development candidate (TASK-015)
+
+V8 keeps v7's controlling-team and unattended-ball rules and adds a confirmed observed-
+stationary-ball cue. A valid in-pitch ball must remain within 0.5 m for 75 frames while both
+teams have valid nearest-player distances. Missing tracking is never D, halves reset state, and
+an exact coordinated tracking freeze suppresses the new cue. Confirmation backfills its observed
+window, so inference is offline with up to three seconds of lookahead.
+
+Seven complete IDSSE matches were grouped by match in leave-one-match-out development evaluation.
+WCSF, all previously inspected SkillCorner matches, and the challenge public window were excluded
+from selection. The frozen v8 candidate reached 88.55% pooled development H/A/D provider
+agreement and 0.4785 official spellF1; the grouped out-of-fold selection result was 88.77% and
+0.4841. These are not independent results: all compatible matches had already been inspected, so
+independent 85% accuracy remains unverified. See
+[`docs/verification/TASK-015.md`](docs/verification/TASK-015.md) for metric definitions,
+ablations, per-match results, leakage controls, fingerprints, and limitations.
+
+```bash
+.venv/bin/python -m model.cross_validate_v8 \
+  --data-root data/external/idsse \
+  --output docs/verification/TASK-015-development.json \
+  --config-out model/config_v8.json
+
+.venv/bin/python model/run.py --config model/config_v8.json \
+  --output evaluation/results/temporal_v8.csv \
+  --diagnostics evaluation/reports/temporal_v8_diagnostics.csv
+.venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v8.csv
+```
