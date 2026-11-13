@@ -1,0 +1,256 @@
+{
+  "match": {
+    "audit": {
+      "archive_sha256": {
+        "positions_FIRST_HALF.csv.zip": "e7e5d753dba30549a01f2e37695556dc3cdf62043e8e3e6447a71e77da30fede",
+        "positions_SECOND_HALF.csv.zip": "8653a296952a717eb1f106fce77bf497f28e34cae673f7e3ae6baa61908751ae"
+      },
+      "ball_missing_frames": 0,
+      "fps": 10,
+      "frames": 57374,
+      "no_players_frames": 0,
+      "reference_conflict_timestamps": 111,
+      "reference_counts": {
+        "A": 12289,
+        "D": 26792,
+        "H": 18293
+      },
+      "timestamps_ms": [
+        [
+          0,
+          2801300
+        ],
+        [
+          3735500,
+          6671400
+        ]
+      ]
+    },
+    "description": "One anonymized official match from a professional European league",
+    "id": "wcsf-anonymous-professional-match"
+  },
+  "protocol_sha256": "51a150ee1188e032861c66467460dc81ad482f446575d3ac5c930ab1622d14af",
+  "results": {
+    "v4-control": {
+      "accuracy": 0.5857182695994702,
+      "alive_dead_f1": 0.7476124840011815,
+      "confusion": [
+        [
+          17051,
+          1187,
+          48,
+          7
+        ],
+        [
+          2074,
+          10062,
+          138,
+          15
+        ],
+        [
+          12901,
+          7399,
+          6492,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "fragmentation": 0.6427184466019418,
+      "label_counts": {
+        "A": 18648,
+        "D": 6678,
+        "H": 32026,
+        "X": 22
+      },
+      "macro_f1": 0.5720429666859964,
+      "n_abstain_on_graded": 22,
+      "n_graded": 57374,
+      "n_gt_spells": 411,
+      "n_pred_spells": 287,
+      "per_class": {
+        "A": {
+          "f1": 0.6504832401331738,
+          "precision": 0.5395752895752896,
+          "recall": 0.8187810236797136,
+          "support": 12289
+        },
+        "D": {
+          "f1": 0.3879294890947117,
+          "precision": 0.97214734950584,
+          "recall": 0.24231113765303075,
+          "support": 26792
+        },
+        "H": {
+          "f1": 0.6777161708301039,
+          "precision": 0.5324111659276838,
+          "recall": 0.9321051768436014,
+          "support": 18293
+        }
+      },
+      "spell_count_error": -124,
+      "spell_f1_at_headline": 0.4326647564469914,
+      "spell_f1_mean": 0.4292263610315186,
+      "team_acc_both_alive": 0.8926384407717126,
+      "team_acc_gt_alive": 0.8865672617879798
+    },
+    "v6-conservative-stoppage": {
+      "accuracy": 0.6642207271586433,
+      "alive_dead_f1": 0.7914842609964561,
+      "confusion": [
+        [
+          17051,
+          1187,
+          48,
+          7
+        ],
+        [
+          2074,
+          10062,
+          138,
+          15
+        ],
+        [
+          9627,
+          6169,
+          10996,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "fragmentation": 0.7786407766990291,
+      "label_counts": {
+        "A": 17418,
+        "D": 11182,
+        "H": 28752,
+        "X": 22
+      },
+      "macro_f1": 0.660476540635276,
+      "n_abstain_on_graded": 22,
+      "n_graded": 57374,
+      "n_gt_spells": 411,
+      "n_pred_spells": 319,
+      "per_class": {
+        "A": {
+          "f1": 0.6774160972161444,
+          "precision": 0.5776782638649672,
+          "recall": 0.8187810236797136,
+          "support": 12289
+        },
+        "D": {
+          "f1": 0.5791330910623058,
+          "precision": 0.983366124128063,
+          "recall": 0.41042102120035834,
+          "support": 26792
+        },
+        "H": {
+          "f1": 0.724880433627378,
+          "precision": 0.5930370061213133,
+          "recall": 0.9321051768436014,
+          "support": 18293
+        }
+      },
+      "spell_count_error": -92,
+      "spell_f1_at_headline": 0.46027397260273967,
+      "spell_f1_mean": 0.45041095890410954,
+      "team_acc_both_alive": 0.8926384407717126,
+      "team_acc_gt_alive": 0.8865672617879798
+    },
+    "v7-development-selected": {
+      "accuracy": 0.7647366402900269,
+      "alive_dead_f1": 0.8534121774558624,
+      "confusion": [
+        [
+          16992,
+          1187,
+          107,
+          7
+        ],
+        [
+          1949,
+          10035,
+          290,
+          15
+        ],
+        [
+          5882,
+          4061,
+          16849,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "fragmentation": 0.9611650485436893,
+      "label_counts": {
+        "A": 15283,
+        "D": 17246,
+        "H": 24823,
+        "X": 22
+      },
+      "macro_f1": 0.7604381435538521,
+      "n_abstain_on_graded": 22,
+      "n_graded": 57374,
+      "n_gt_spells": 411,
+      "n_pred_spells": 358,
+      "per_class": {
+        "A": {
+          "f1": 0.7279123748730597,
+          "precision": 0.6566119217431132,
+          "recall": 0.8165839368540971,
+          "support": 12289
+        },
+        "D": {
+          "f1": 0.7652027794177755,
+          "precision": 0.9769801693146237,
+          "recall": 0.6288817557479844,
+          "support": 26792
+        },
+        "H": {
+          "f1": 0.7881992763707208,
+          "precision": 0.6845264472465052,
+          "recall": 0.9288798994150768,
+          "support": 18293
+        }
+      },
+      "spell_count_error": -53,
+      "spell_f1_at_headline": 0.4837451235370611,
+      "spell_f1_mean": 0.47698309492847846,
+      "team_acc_both_alive": 0.8960315618472964,
+      "team_acc_gt_alive": 0.8837551500882872
+    }
+  },
+  "selected": "v7-development-selected",
+  "selection": {
+    "development_only": "Choose and freeze candidate parameters using the five named IDSSE development matches only.",
+    "diagnostics": [
+      "H/A/D accuracy",
+      "live-team agreement",
+      "dead-ball recall",
+      "possession-spell counts and durations"
+    ],
+    "fresh_test": "After the candidate is frozen, inspect and score the reserved WCSF match once.",
+    "primary_metric": "spell_f1_mean from the unchanged official possession_metrics implementation",
+    "prohibited": [
+      "No challenge public labels for tuning or selection",
+      "No WCSF reference inspection before the candidate is frozen",
+      "No parameter changes after viewing WCSF results"
+    ],
+    "tie_breaker": "macro_f1"
+  },
+  "source": "MatKempeGroningen/WCSF_SolutionRoom",
+  "source_revision": "1c9ba798f98a9fffb16081a5d3965774d4e5662c"
+}

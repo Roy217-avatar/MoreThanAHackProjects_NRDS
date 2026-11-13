@@ -1,0 +1,12 @@
+{
+  "source": "IDSSE / DFL / Sportec, PySport mirror",
+  "source_revision": "a715a38dfbaf5f58e431727c2b78d174101a703c",
+  "development": ["J03WMX", "J03WN1", "J03WOH", "J03WOY", "J03WPY"],
+  "pitch_m": [105.0, 68.0],
+  "grid": {
+    "stationary_unattended_frames": [25, 50, 75, 100, 150],
+    "stationary_unattended_radius_m": [0.25, 0.5, 1.0],
+    "stationary_unattended_min_player_m": [2.0, 3.0, 4.0, 5.0, 7.0]
+  },
+  "selection": "Maximum official spell_f1_mean; ties use macro_f1, then H/A/D accuracy. No challenge labels or WCSF test references are read."
+}

@@ -1,4 +1,18 @@
-# Task board — 2026-11-11
+# Task board — 2026-11-12
+
+### TASK-014 — Freeze, refine and independently assess the temporal model
+- Status: done
+- Priority: P1
+- Owner: Codex
+- Depends on: TASK-013
+- Goal: Execute the four-stage completion plan: reserve a fresh external test, improve live/dead and possession coherence on development data, run one frozen external test, and choose the challenge candidate by the official ranking metric.
+- Scope: a pinned WCSF test protocol; development-only model refinement; a separate WCSF adapter and synthetic tests; official spell metrics on external references; final model choice and reproducibility evidence. Official baseline/evaluator files remain unchanged.
+- Acceptance criteria: the WCSF match and source revision are recorded before download/scoring; all parameter selection uses only the five pre-existing IDSSE development matches; the candidate is frozen before WCSF references are inspected; WCSF is scored once with the official metrics implementation; selection prioritizes `spell_f1_mean`, then macro-F1; the chosen tactical CSV validates and repeats byte for byte.
+- Verification: protocol review and fingerprint; red/green synthetic adapter and selection tests; complete unit suite; official metric output; official tactical CSV validator; repeated generation/hash; diff and leakage review.
+- Evidence: Stage 1 reservation saved in `model/wcsf_protocol.json` before data download or scoring. Public source HEAD was `1c9ba798f98a9fffb16081a5d3965774d4e5662c` when reserved on 2026-11-12; sealed archive hashes are `e7e5d753...` and `8653a296...`. Stage 2 searched 75 settings on only the five declared IDSSE development matches and froze `model/config_v7_stoppage.json` at SHA-256 `c28b2df9...` before archive inspection. Development metrics: spellF1 0.43125, macro-F1 0.82925, H/A/D agreement 84.07%, dead recall 87.04%, live-team agreement 81.51%. On the one fresh 57,374-frame WCSF match, v7 led the predeclared comparison with spellF1 0.47698 and 76.47% H/A/D agreement; this is provider agreement, not challenge accuracy. All 81 tests passed. The selected 199,319-row tactical CSV passed the official validator and two generations matched SHA-256 `5637746f...`; diagnostics also matched. `git diff --check` passed, official baseline/evaluator files are unchanged, and upstream HEAD remains the pinned `f8f2629...`. Full record: `docs/verification/TASK-014.md`.
+- Blocker: none for stages 1–4. The WCSF source contains one anonymized professional match, so evidence is limited and the earlier 10–50-match/90% aspirations remain unmet.
+- Last updated: 2026-11-12
+- Handoff: use v7 as the current challenge candidate. TASK-007 remains: prepare the team-named submission and technical document once the registered team name is supplied; do not claim an official/private score.
 
 ### TASK-013 — Detect observed unattended stoppages
 - Status: done

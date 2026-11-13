@@ -156,3 +156,28 @@ Run the tactical candidate with:
   --diagnostics evaluation/reports/temporal_v6_stoppage_diagnostics.csv
 .venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v6_stoppage.csv
 ```
+
+## Frozen v7 candidate and independent WCSF check (TASK-014)
+
+`model/config_v7_stoppage.json` is the current candidate. It keeps v4 possession-control
+settings and changes only the observed unattended-ball cue to one second, a 0.5 m stationary
+radius and a 2 m nearest-player clearance. Those values were selected by official `spell_f1_mean`
+on five previously declared IDSSE development matches. The challenge public labels were not read.
+
+The candidate was frozen before opening a separately reserved, anonymized WCSF professional
+match. On that one 57,374-frame provider-reference match, v7 scored **0.4770 spellF1** and
+**76.47% H/A/D agreement**, versus 0.4504 and 66.42% for v6. This is external provider agreement,
+not an official challenge score or evidence of 90% accuracy. The source has no public team names
+or match date. The latest accuracy, spell and dead-ball analysis is highlighted in
+[`docs/verification/TASK-014.md`](docs/verification/TASK-014.md).
+
+Generate and check the selected tactical prediction with:
+
+```bash
+export MTAH_DATA_DIR=/absolute/path/to/authorized/bundle
+.venv/bin/python model/run.py --config model/config_v7_stoppage.json \
+  --output evaluation/results/temporal_v7_stoppage.csv \
+  --diagnostics evaluation/reports/temporal_v7_stoppage_diagnostics.csv
+.venv/bin/python evaluation/validate_submission.py evaluation/results/temporal_v7_stoppage.csv
+shasum -a 256 evaluation/results/temporal_v7_stoppage.csv
+```

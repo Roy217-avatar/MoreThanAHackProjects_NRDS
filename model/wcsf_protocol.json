@@ -1,0 +1,68 @@
+{
+  "source": "MatKempeGroningen/WCSF_SolutionRoom",
+  "source_url": "https://github.com/MatKempeGroningen/WCSF_SolutionRoom",
+  "source_revision": "1c9ba798f98a9fffb16081a5d3965774d4e5662c",
+  "reserved_at": "2026-11-12",
+  "reservation_state": "candidate_frozen_before_archive_inspection_or_scoring",
+  "frozen_candidate": {
+    "path": "model/config_v7_stoppage.json",
+    "sha256": "c28b2df9e0dab945663f3d0bd2e0d8319b948e834a3d2fc597f9e03205f0ff67",
+    "frozen_at": "2026-11-12"
+  },
+  "one_shot_comparison": [
+    {
+      "name": "v4-control",
+      "path": "model/config_v4.json",
+      "sha256": "9df346247df6dbbbbd5860a375bd2d601bc01a899c5fe0ecbc4733553df36a49"
+    },
+    {
+      "name": "v6-conservative-stoppage",
+      "path": "model/config_v6_stoppage.json",
+      "sha256": "43e26052fa85081e72d764671509d2cbb41bb68889da722437bf657361227b03"
+    },
+    {
+      "name": "v7-development-selected",
+      "path": "model/config_v7_stoppage.json",
+      "sha256": "c28b2df9e0dab945663f3d0bd2e0d8319b948e834a3d2fc597f9e03205f0ff67"
+    }
+  ],
+  "matches": [
+    {
+      "id": "wcsf-anonymous-professional-match",
+      "description": "One anonymized official match from a professional European league",
+      "role": "fresh_final_test",
+      "files": [
+        "positions_FIRST_HALF.csv.zip",
+        "positions_SECOND_HALF.csv.zip"
+      ],
+      "input_sha256": {
+        "positions_FIRST_HALF.csv.zip": "e7e5d753dba30549a01f2e37695556dc3cdf62043e8e3e6447a71e77da30fede",
+        "positions_SECOND_HALF.csv.zip": "8653a296952a717eb1f106fce77bf497f28e34cae673f7e3ae6baa61908751ae"
+      }
+    }
+  ],
+  "development_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "J03WOY",
+    "J03WPY"
+  ],
+  "selection_policy": {
+    "development_only": "Choose and freeze candidate parameters using the five named IDSSE development matches only.",
+    "fresh_test": "After the candidate is frozen, inspect and score the reserved WCSF match once.",
+    "primary_metric": "spell_f1_mean from the unchanged official possession_metrics implementation",
+    "tie_breaker": "macro_f1",
+    "diagnostics": [
+      "H/A/D accuracy",
+      "live-team agreement",
+      "dead-ball recall",
+      "possession-spell counts and durations"
+    ],
+    "prohibited": [
+      "No challenge public labels for tuning or selection",
+      "No WCSF reference inspection before the candidate is frozen",
+      "No parameter changes after viewing WCSF results"
+    ]
+  }
+}

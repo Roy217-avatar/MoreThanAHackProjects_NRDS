@@ -21,7 +21,8 @@ class ExternalSkillCornerTests(unittest.TestCase):
         self.phases = Path(self.temp.name) / "phases.csv"
         self.config = {"control_distance_m": 2, "opponent_margin_m": 0.75,
                        "control_frames": 12, "evidence_gap_frames": 5,
-                       "out_of_bounds_frames": 25}
+                       "out_of_bounds_frames": 25,
+                       "stationary_unattended_frames": 25}
         self.metadata = {"id": 7, "status": "closed", "date_time": "2025-01-01T00:00:00Z",
                          "pitch_length": 100, "pitch_width": 60,
                          "home_team": {"id": 11, "name": "Home"},
@@ -58,7 +59,8 @@ class ExternalSkillCornerTests(unittest.TestCase):
     def test_scales_temporal_durations_from_25_to_10_fps(self):
         scaled = adapter.scale_config(self.config, 10)
         self.assertEqual((scaled["control_frames"], scaled["evidence_gap_frames"],
-                          scaled["out_of_bounds_frames"]), (5, 2, 10))
+                          scaled["out_of_bounds_frames"],
+                          scaled["stationary_unattended_frames"]), (5, 2, 10, 10))
         self.assertEqual(self.config["control_frames"], 12)
 
     def test_maps_metric_coordinates_teams_and_inclusive_periods(self):
